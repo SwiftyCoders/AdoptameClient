@@ -6,6 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1A2BE3972D51596900843482 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BE3942D51596900843482 /* ContentView.swift */; };
+		1A2BE3982D51596900843482 /* RescueMeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BE3952D51596900843482 /* RescueMeApp.swift */; };
+		1A2BE3992D51596900843482 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A2BE3912D51596900843482 /* Preview Assets.xcassets */; };
+		1A2BE39A2D51596900843482 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A2BE3932D51596900843482 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		1A2BE33F2D51581C00843482 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,14 +34,13 @@
 		1A2BE32E2D51581B00843482 /* RescueMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RescueMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A2BE33E2D51581C00843482 /* RescueMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RescueMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A2BE3482D51581C00843482 /* RescueMeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RescueMeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A2BE3912D51596900843482 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1A2BE3932D51596900843482 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1A2BE3942D51596900843482 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1A2BE3952D51596900843482 /* RescueMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RescueMeApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		1A2BE3302D51581B00843482 /* RescueMe */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = RescueMe;
-			sourceTree = "<group>";
-		};
 		1A2BE3412D51581C00843482 /* RescueMeTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = RescueMeTests;
@@ -75,7 +81,7 @@
 		1A2BE3252D51581B00843482 = {
 			isa = PBXGroup;
 			children = (
-				1A2BE3302D51581B00843482 /* RescueMe */,
+				1A2BE3962D51596900843482 /* RescueMe */,
 				1A2BE3412D51581C00843482 /* RescueMeTests */,
 				1A2BE34B2D51581C00843482 /* RescueMeUITests */,
 				1A2BE32F2D51581B00843482 /* Products */,
@@ -92,6 +98,65 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		1A2BE3922D51596900843482 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				1A2BE3912D51596900843482 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1A2BE3962D51596900843482 /* RescueMe */ = {
+			isa = PBXGroup;
+			children = (
+				1A2BE39E2D51599200843482 /* Views */,
+				1A2BE39D2D51598C00843482 /* Managers */,
+				1A2BE39C2D51598600843482 /* Components */,
+				1A2BE39B2D51597E00843482 /* Resources */,
+				1A2BE3922D51596900843482 /* Preview Content */,
+				1A2BE39F2D5159A600843482 /* System */,
+			);
+			path = RescueMe;
+			sourceTree = "<group>";
+		};
+		1A2BE39B2D51597E00843482 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1A2BE3932D51596900843482 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1A2BE39C2D51598600843482 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		1A2BE39D2D51598C00843482 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		1A2BE39E2D51599200843482 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1A2BE3942D51596900843482 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1A2BE39F2D5159A600843482 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				1A2BE3952D51596900843482 /* RescueMeApp.swift */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,9 +171,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				1A2BE3302D51581B00843482 /* RescueMe */,
 			);
 			name = RescueMe;
 			packageProductDependencies = (
@@ -212,6 +274,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A2BE3992D51596900843482 /* Preview Assets.xcassets in Resources */,
+				1A2BE39A2D51596900843482 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +300,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A2BE3972D51596900843482 /* ContentView.swift in Sources */,
+				1A2BE3982D51596900843482 /* RescueMeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
