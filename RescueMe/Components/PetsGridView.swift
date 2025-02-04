@@ -37,6 +37,11 @@ struct PetsGridView: View {
                             )
                     )
                 }
+                .accessibilityLabel("\(petCategory) emoji")
+                .accessibilityHint("Tap to select \(petCategory)")
+                .accessibilityValue(isSelected ? "Selected" : "Not Selected")
+                .accessibilityAddTraits(isSelected ? .isSelected : [])
+                
             case .circle:
                 VStack(spacing: 8) {
                     Button {
@@ -52,6 +57,10 @@ struct PetsGridView: View {
                                         isSelected ? Color.primaryOrange : Color.gray.opacity(0.5), lineWidth: isSelected ? 2 : 1)
                             )
                     }
+                    .accessibilityLabel("\(petCategory) emoji")
+                    .accessibilityHint("Tap to select \(petCategory)")
+                    .accessibilityValue(isSelected ? "Selected" : "Not Selected")
+                    .accessibilityAddTraits(isSelected ? .isSelected : [])
                     
                     Text(petCategory)
                         .font(.subheadline)
@@ -59,6 +68,7 @@ struct PetsGridView: View {
                 }
             }
         }
+        .accessibilityElement(children: .combine)
     }
 }
 
