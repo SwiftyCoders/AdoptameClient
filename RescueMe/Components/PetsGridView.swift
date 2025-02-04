@@ -1,10 +1,3 @@
-//
-//  PetsGridView.swift
-//  RescueMe
-//
-//  Created by Laura Isabel Rojas Bustamante on 4/02/25.
-//
-
 import SwiftUI
 
 struct PetsGridView: View {
