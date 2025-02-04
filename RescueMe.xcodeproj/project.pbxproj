@@ -14,6 +14,7 @@
 		1A2BE3A12D515CD700843482 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BE3A02D515CD500843482 /* NavigationManager.swift */; };
 		1A2BE4332D52431500843482 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BE4322D52431500843482 /* SplashView.swift */; };
 		1A2BE4352D52437D00843482 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BE4342D52437D00843482 /* LoadingView.swift */; };
+		1A2BE46A2D5263A400843482 /* HeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BE43C2D524A3300843482 /* HeartButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		1A2BE3A02D515CD500843482 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		1A2BE4322D52431500843482 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		1A2BE4342D52437D00843482 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		1A2BE43C2D524A3300843482 /* HeartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -136,6 +138,7 @@
 		1A2BE39C2D51598600843482 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				1A2BE43C2D524A3300843482 /* HeartButton.swift */,
 				1A2BE4342D52437D00843482 /* LoadingView.swift */,
 			);
 			path = Components;
@@ -311,6 +314,7 @@
 			files = (
 				1A2BE3A12D515CD700843482 /* NavigationManager.swift in Sources */,
 				1A2BE3972D51596900843482 /* ContentView.swift in Sources */,
+				1A2BE46A2D5263A400843482 /* HeartButton.swift in Sources */,
 				1A2BE4332D52431500843482 /* SplashView.swift in Sources */,
 				1A2BE3982D51596900843482 /* RescueMeApp.swift in Sources */,
 				1A2BE4352D52437D00843482 /* LoadingView.swift in Sources */,
