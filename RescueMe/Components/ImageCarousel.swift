@@ -27,6 +27,7 @@ struct ImageCarousel<ImageType: Identifiable & Hashable>: View {
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .frame(maxWidth: .infinity, maxHeight: 300)
             .padding()
+            .accessibilityLabel("Contiene las imágenes de la mascota")
         }
         Spacer()
     }
