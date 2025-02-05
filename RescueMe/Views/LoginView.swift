@@ -12,7 +12,6 @@ struct LoginView: View {
         } foregroundContent: {
             foregroundView
         }
-        
         .sheet(isPresented: $showPrivacy) {
             Text("Privacy")
         }
