@@ -49,7 +49,6 @@ struct PetsGridView: View {
                     } label: {
                         Text(emoji)
                             .font(.system(size: 40))
-                        
                             .frame(width: 100, height: 100)
                             .overlay(
                                 Circle()
