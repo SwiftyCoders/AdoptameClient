@@ -24,9 +24,9 @@ struct WelcomScreenView<Content: View>: View {
                 Spacer()
                 RoundedBottomRectangle(curveOffset: curveOffset)
                     .fill(.background)
-                    .containerRelativeFrame(.vertical, { num, _ in
+                    .containerRelativeFrame(.vertical) { num, _ in
                         num / heightRatio
-                    })
+                    }
                     .shadow(radius: 20)
                     .overlay(alignment: .center) {
                         content
