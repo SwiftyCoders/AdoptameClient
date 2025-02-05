@@ -6,7 +6,7 @@ struct WelcomScreenView<Content: View>: View {
     var curveOffset: CGFloat
     let content: Content
     
-    init(_ background: Color = .orange, heightRatio: CGFloat = 2, curveOffset: CGFloat = 80 , content: () -> Content) {
+    init(_ background: Color = .orange, heightRatio: CGFloat = 2, curveOffset: CGFloat = 80 ,@ViewBuilder content: () -> Content) {
         self.background = background
         self.heightRatio = heightRatio
         self.curveOffset = curveOffset
@@ -28,7 +28,7 @@ struct WelcomScreenView<Content: View>: View {
                         num / heightRatio
                     })
                     .shadow(radius: 20)
-                    .overlay(alignment: .top) {
+                    .overlay(alignment: .center) {
                         content
                     }
             }
@@ -37,8 +37,6 @@ struct WelcomScreenView<Content: View>: View {
     }
 }
 
-
-//Use example
 #Preview {
     WelcomScreenView(.green) {
         VStack(spacing: 0) {
