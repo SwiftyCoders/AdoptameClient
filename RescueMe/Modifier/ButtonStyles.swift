@@ -16,9 +16,13 @@ struct CapsuleWide: ButtonStyle {
     }
 }
 
-extension ButtonStyle where Self == CapsuleWide {
-    static func capsuleWide(_ bg: Color = .orange, fg: Color = .white) -> CapsuleWide {
-        CapsuleWide(color: bg, fontColor: fg)
+extension View {
+    func buttonPrimaryStyle(bg: Color = .primaryOrange, fg: Color = .white) -> some View {
+        self.buttonStyle(CapsuleWide(color: bg, fontColor: fg))
+    }
+    
+    func buttonSecundaryStyle(bg: Color = .secondaryOrange, fg: Color = .primaryOrange) -> some View {
+        self.buttonStyle(CapsuleWide(color: bg, fontColor: fg))
     }
 }
 

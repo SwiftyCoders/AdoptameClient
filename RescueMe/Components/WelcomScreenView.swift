@@ -43,9 +43,9 @@ struct WelcomScreenView<Content: View>: View {
             IntroDescriptionView(title: "Adoptify - Where Furry Tales Begin", description: "Embark on a heartwarming journey to find your perfect companion. Swipe, match, and open your heart to a new furry friend sad")
             HStack {
                 Button("action 1") { }
-                    .buttonStyle(.capsuleWide(.secondaryOrange, fg: .primaryOrange))
+                    .buttonPrimaryStyle()
                 Button("action 2") { }
-                    .buttonStyle(.capsuleWide())
+                    .buttonSecundaryStyle()
             }
             .padding(.bottom, 20)
             .safeAreaPadding()
