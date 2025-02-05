@@ -12,6 +12,10 @@
 		1A2BE3992D51596900843482 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A2BE3912D51596900843482 /* Preview Assets.xcassets */; };
 		1A2BE39A2D51596900843482 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A2BE3932D51596900843482 /* Assets.xcassets */; };
 		1A2BE3A12D515CD700843482 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BE3A02D515CD500843482 /* NavigationManager.swift */; };
+		1A2BE3A32D515CF500843482 /* WelcomScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BE3A22D515CF500843482 /* WelcomScreenView.swift */; };
+		42AB9E7A2D52C12300E64926 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AB9E792D52C12300E64926 /* ButtonStyles.swift */; };
+		42AB9E7E2D52DA2600E64926 /* RoundedBottomRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AB9E7D2D52DA2600E64926 /* RoundedBottomRectangle.swift */; };
+		42AB9E802D52DCF700E64926 /* IntroDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AB9E7F2D52DCF700E64926 /* IntroDescriptionView.swift */; };
 		1A2BE4332D52431500843482 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BE4322D52431500843482 /* SplashView.swift */; };
 		1A2BE4352D52437D00843482 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BE4342D52437D00843482 /* LoadingView.swift */; };
 		1A2BE46A2D5263A400843482 /* HeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BE43C2D524A3300843482 /* HeartButton.swift */; };
@@ -50,6 +54,10 @@
 		1A2BE3942D51596900843482 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1A2BE3952D51596900843482 /* RescueMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RescueMeApp.swift; sourceTree = "<group>"; };
 		1A2BE3A02D515CD500843482 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
+		1A2BE3A22D515CF500843482 /* WelcomScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomScreenView.swift; sourceTree = "<group>"; };
+		42AB9E792D52C12300E64926 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		42AB9E7D2D52DA2600E64926 /* RoundedBottomRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBottomRectangle.swift; sourceTree = "<group>"; };
+		42AB9E7F2D52DCF700E64926 /* IntroDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroDescriptionView.swift; sourceTree = "<group>"; };
 		1A2BE4322D52431500843482 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		1A2BE4342D52437D00843482 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		1A2BE43C2D524A3300843482 /* HeartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartButton.swift; sourceTree = "<group>"; };
@@ -135,6 +143,8 @@
 				1A2BE39E2D51599200843482 /* Views */,
 				1A2BE39D2D51598C00843482 /* Managers */,
 				1A2BE39C2D51598600843482 /* Components */,
+				42AB9E7B2D52C13000E64926 /* Modifier */,
+				42AB9E7C2D52D9BF00E64926 /* Shapes */,
 				1A2BE39B2D51597E00843482 /* Resources */,
 				1A2BE3922D51596900843482 /* Preview Content */,
 				1A2BE39F2D5159A600843482 /* System */,
@@ -153,6 +163,8 @@
 		1A2BE39C2D51598600843482 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				1A2BE3A22D515CF500843482 /* WelcomScreenView.swift */,
+				42AB9E7F2D52DCF700E64926 /* IntroDescriptionView.swift */,
 				D3933A4A2D5228C7004EBE76 /* PetsGridView.swift */,
 				1A2BE43C2D524A3300843482 /* HeartButton.swift */,
 				1A2BE4342D52437D00843482 /* LoadingView.swift */,
@@ -183,6 +195,22 @@
 				1A2BE3952D51596900843482 /* RescueMeApp.swift */,
 			);
 			path = System;
+			sourceTree = "<group>";
+		};
+		42AB9E7B2D52C13000E64926 /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				42AB9E792D52C12300E64926 /* ButtonStyles.swift */,
+			);
+			path = Modifier;
+			sourceTree = "<group>";
+		};
+		42AB9E7C2D52D9BF00E64926 /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				42AB9E7D2D52DA2600E64926 /* RoundedBottomRectangle.swift */,
+			);
+			path = Shapes;
 			sourceTree = "<group>";
 		};
 		1A2BE4892D52CAAA00843482 /* Models */ = {
@@ -359,6 +387,10 @@
 				1A2BE4962D52D01D00843482 /* UserDTO.swift in Sources */,
 				1A2BE48F2D52CEC300843482 /* User.swift in Sources */,
 				1A2BE3982D51596900843482 /* RescueMeApp.swift in Sources */,
+				42AB9E7A2D52C12300E64926 /* ButtonStyles.swift in Sources */,
+				42AB9E7E2D52DA2600E64926 /* RoundedBottomRectangle.swift in Sources */,
+				42AB9E802D52DCF700E64926 /* IntroDescriptionView.swift in Sources */,
+				1A2BE3A32D515CF500843482 /* WelcomScreenView.swift in Sources */,
 				1A2BE4352D52437D00843482 /* LoadingView.swift in Sources */,
 				1A2BE48D2D52CDA400843482 /* Shelter.swift in Sources */,
 				1A2BE4922D52CFDA00843482 /* PetDTO.swift in Sources */,
