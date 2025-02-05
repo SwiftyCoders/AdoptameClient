@@ -13,6 +13,9 @@
 		1A2BE39A2D51596900843482 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A2BE3932D51596900843482 /* Assets.xcassets */; };
 		1A2BE3A12D515CD700843482 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BE3A02D515CD500843482 /* NavigationManager.swift */; };
 		1A2BE3A32D515CF500843482 /* WelcomScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BE3A22D515CF500843482 /* WelcomScreenView.swift */; };
+		42AB9E7A2D52C12300E64926 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AB9E792D52C12300E64926 /* ButtonStyles.swift */; };
+		42AB9E7E2D52DA2600E64926 /* RoundedBottomRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AB9E7D2D52DA2600E64926 /* RoundedBottomRectangle.swift */; };
+		42AB9E802D52DCF700E64926 /* IntroDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AB9E7F2D52DCF700E64926 /* IntroDescriptionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,9 @@
 		1A2BE3952D51596900843482 /* RescueMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RescueMeApp.swift; sourceTree = "<group>"; };
 		1A2BE3A02D515CD500843482 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		1A2BE3A22D515CF500843482 /* WelcomScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomScreenView.swift; sourceTree = "<group>"; };
+		42AB9E792D52C12300E64926 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		42AB9E7D2D52DA2600E64926 /* RoundedBottomRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBottomRectangle.swift; sourceTree = "<group>"; };
+		42AB9E7F2D52DCF700E64926 /* IntroDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroDescriptionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -116,6 +122,8 @@
 				1A2BE39E2D51599200843482 /* Views */,
 				1A2BE39D2D51598C00843482 /* Managers */,
 				1A2BE39C2D51598600843482 /* Components */,
+				42AB9E7B2D52C13000E64926 /* Modifier */,
+				42AB9E7C2D52D9BF00E64926 /* Shapes */,
 				1A2BE39B2D51597E00843482 /* Resources */,
 				1A2BE3922D51596900843482 /* Preview Content */,
 				1A2BE39F2D5159A600843482 /* System */,
@@ -135,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				1A2BE3A22D515CF500843482 /* WelcomScreenView.swift */,
+				42AB9E7F2D52DCF700E64926 /* IntroDescriptionView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -161,6 +170,22 @@
 				1A2BE3952D51596900843482 /* RescueMeApp.swift */,
 			);
 			path = System;
+			sourceTree = "<group>";
+		};
+		42AB9E7B2D52C13000E64926 /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				42AB9E792D52C12300E64926 /* ButtonStyles.swift */,
+			);
+			path = Modifier;
+			sourceTree = "<group>";
+		};
+		42AB9E7C2D52D9BF00E64926 /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				42AB9E7D2D52DA2600E64926 /* RoundedBottomRectangle.swift */,
+			);
+			path = Shapes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,6 +334,9 @@
 				1A2BE3A12D515CD700843482 /* NavigationManager.swift in Sources */,
 				1A2BE3972D51596900843482 /* ContentView.swift in Sources */,
 				1A2BE3982D51596900843482 /* RescueMeApp.swift in Sources */,
+				42AB9E7A2D52C12300E64926 /* ButtonStyles.swift in Sources */,
+				42AB9E7E2D52DA2600E64926 /* RoundedBottomRectangle.swift in Sources */,
+				42AB9E802D52DCF700E64926 /* IntroDescriptionView.swift in Sources */,
 				1A2BE3A32D515CF500843482 /* WelcomScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
