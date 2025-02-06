@@ -16,14 +16,21 @@ struct ImageCarousel<ImageType: Identifiable & Hashable>: View {
                     VStack {
                         imageProvider(imageItem)
                             .resizable()
-                            .scaledToFill()
-                            .frame(width: 50)
+                            .scaledToFit()
                     }
                 }
             }
             .tabViewStyle(.page)
             .indexViewStyle(.page(backgroundDisplayMode: .always))
-            .background(.orange)
+            .background {
+                ZStack {
+                    if let bgImage = images.first {
+                        imageProvider(bgImage)
+                            .blur(radius: 10)
+                    }
+                    Color.black.opacity(0.7)
+                }
+            }
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .frame(maxWidth: .infinity, maxHeight: 300)
             .padding()
@@ -36,9 +43,10 @@ struct ImageCarousel<ImageType: Identifiable & Hashable>: View {
 //MARK: USAGE EXAMPLE
 struct ExampleView: View {
     let images: [ImageItem] = [
-        ImageItem(imageName: .heartIcon),
-        ImageItem(imageName: .logoAdoptifurro),
-        ImageItem(imageName: .heartIcon)
+        ImageItem(imageName: .hiro1),
+        ImageItem(imageName: .hiro2),
+        ImageItem(imageName: .hiro3),
+        ImageItem(imageName: .hiro4)
     ]
 
     var body: some View {
