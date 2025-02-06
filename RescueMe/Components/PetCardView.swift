@@ -2,8 +2,7 @@ import SwiftUI
 
 struct PetCardView: View {
     
-    //MARK: PetModel
-    let imagePet: Image
+    var petModel: Pet 
     
     var body: some View {
         
@@ -49,5 +48,5 @@ struct PetCardView: View {
 }
 
 #Preview {
-    PetCardView(imagePet: Image(.dogImageMock))
+    PetCardView(petModel: <#Pet#>)
 }
