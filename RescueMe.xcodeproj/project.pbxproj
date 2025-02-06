@@ -22,6 +22,7 @@
 		1A2BE4922D52CFDA00843482 /* PetDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BE4912D52CFDA00843482 /* PetDTO.swift */; };
 		1A2BE4942D52CFDF00843482 /* ShelterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BE4932D52CFDF00843482 /* ShelterDTO.swift */; };
 		1A2BE4962D52D01D00843482 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BE4952D52D01D00843482 /* UserDTO.swift */; };
+		429ECEF22D53FFCC00B3D2BD /* PetAttributeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429ECEF12D53FFCC00B3D2BD /* PetAttributeGrid.swift */; };
 		1A2BE52E2D5417E000843482 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BE52D2D5417E000843482 /* LoginView.swift */; };
 		42AB9E7A2D52C12300E64926 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AB9E792D52C12300E64926 /* ButtonStyles.swift */; };
 		42AB9E7E2D52DA2600E64926 /* RoundedBottomRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AB9E7D2D52DA2600E64926 /* RoundedBottomRectangle.swift */; };
@@ -65,6 +66,7 @@
 		1A2BE4912D52CFDA00843482 /* PetDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDTO.swift; sourceTree = "<group>"; };
 		1A2BE4932D52CFDF00843482 /* ShelterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShelterDTO.swift; sourceTree = "<group>"; };
 		1A2BE4952D52D01D00843482 /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
+		429ECEF12D53FFCC00B3D2BD /* PetAttributeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetAttributeGrid.swift; sourceTree = "<group>"; };
 		1A2BE52D2D5417E000843482 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		42AB9E792D52C12300E64926 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		42AB9E7D2D52DA2600E64926 /* RoundedBottomRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBottomRectangle.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				D3933A4A2D5228C7004EBE76 /* PetsGridView.swift */,
 				1A2BE43C2D524A3300843482 /* HeartButton.swift */,
 				1A2BE4342D52437D00843482 /* LoadingView.swift */,
+				429ECEF12D53FFCC00B3D2BD /* PetAttributeGrid.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				42AB9E7E2D52DA2600E64926 /* RoundedBottomRectangle.swift in Sources */,
 				1A2BE52E2D5417E000843482 /* LoginView.swift in Sources */,
 				42AB9E802D52DCF700E64926 /* IntroDescriptionView.swift in Sources */,
+				429ECEF22D53FFCC00B3D2BD /* PetAttributeGrid.swift in Sources */,
 				1A2BE3A32D515CF500843482 /* WelcomScreenView.swift in Sources */,
 				1A2BE4352D52437D00843482 /* LoadingView.swift in Sources */,
 				1A2BE48D2D52CDA400843482 /* Shelter.swift in Sources */,
