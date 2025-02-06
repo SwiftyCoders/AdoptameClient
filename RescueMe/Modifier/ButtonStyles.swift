@@ -1,6 +1,5 @@
 import SwiftUI
 
-//MARK: - CapsuleWide
 struct CapsuleWide: ButtonStyle {
     var color: Color = .orange
     var fontColor: Color = .white
@@ -24,6 +23,28 @@ extension View {
     func buttonSecundaryStyle(bg: Color = .secondaryOrange, fg: Color = .primaryOrange) -> some View {
         self.buttonStyle(CapsuleWide(color: bg, fontColor: fg))
     }
+    
+    func buttonSelectStyle(_ isSelected: Bool = false, accentColor: Color = .primaryOrange) -> some View {
+        self.buttonStyle(SelectionButton(isSelected: isSelected, color: accentColor))
+    }
 }
 
-//MARK: - NextStyle
+struct SelectionButton: ButtonStyle {
+    var isSelected: Bool = false
+    var color: Color = .orange
+    
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding(.vertical, 12)
+            .padding(.horizontal, 24)
+            .foregroundStyle(isSelected ? .white : .black)
+            .background(isSelected ? color : .white)
+            .clipShape(Capsule())
+            .overlay {
+                Capsule()
+                    .stroke(isSelected ? Color.gray.opacity(0.0) : Color.gray.opacity(0.5), lineWidth:  1)
+            }
+    }
+}
+
+
