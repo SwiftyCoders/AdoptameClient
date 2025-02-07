@@ -20,14 +20,14 @@ struct ImagePicker: View {
                 Image(uiImage: uiImage)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 250, height: 250)
+                    .frame(width: 220, height: 220)
                     .clipShape(Circle())
                     .shadow(radius: 10)
             } else {
                 Text("Selecciona tu imagen de perfil")
                     .font(.title3)
                     .multilineTextAlignment(.center)
-                    .frame(width: 250, height: 250)
+                    .frame(width: 220, height: 220)
                     .clipShape(Circle())
                     .shadow(radius: 10)
                     .background(Color.gray.opacity(0.3))
@@ -53,7 +53,7 @@ struct ImagePicker: View {
                     }
                 }
             }
-            .offset(x: 80, y: 90)
+            .offset(x: 80, y: 80)
         }
         
     }
