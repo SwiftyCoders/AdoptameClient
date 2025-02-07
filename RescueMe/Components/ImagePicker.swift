@@ -1,10 +1,3 @@
-//
-//  SwiftUIView.swift
-//  RescueMe
-//
-//  Created by María Pérez Pascual on 7/2/25.
-//
-
 import SwiftUI
 import PhotosUI
 
@@ -55,7 +48,6 @@ struct ImagePicker: View {
             }
             .offset(x: 80, y: 80)
         }
-        
     }
 }
 
