@@ -27,17 +27,13 @@ struct PetCardView: View {
                         .font(.footnote)
                         .foregroundColor(.primaryOrange)
                     
-                    Text(String(format: "%.1f km", petModel.latitude))
-                        .font(.footnote)
-                        .foregroundColor(.secondary)
-                    
-                    Text("•")
-                        .font(.footnote)
-                        .foregroundColor(.secondary)
-                    
-                    Text(petModel.breed)
-                        .font(.footnote)
-                        .foregroundColor(.secondary)
+                    Group {
+                        Text(String(format: "%.1f km", petModel.latitude))
+                        Text("•")
+                        Text(petModel.breed)
+                    }
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
                 }
             }
             .padding(.top, 8)
