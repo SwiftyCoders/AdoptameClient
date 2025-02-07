@@ -28,6 +28,7 @@
 		1AB7066B2D564A58006A9F4B /* PreviewShelter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7066A2D564A58006A9F4B /* PreviewShelter.swift */; };
 		1AB7066D2D564A61006A9F4B /* PreviewUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB7066C2D564A61006A9F4B /* PreviewUsers.swift */; };
 		42AB9E7E2D52DA2600E64926 /* RoundedBottomRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AB9E7D2D52DA2600E64926 /* RoundedBottomRectangle.swift */; };
+		42F037142D564BA2006CC1A5 /* PetsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3933A4A2D5228C7004EBE76 /* PetsGridView.swift */; };
 		D360AB182D55044D00F5EF95 /* IntroDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AB9E7F2D52DCF700E64926 /* IntroDescriptionView.swift */; };
 		D360AB192D55046F00F5EF95 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AB9E792D52C12300E64926 /* ButtonStyles.swift */; };
 		D3F7A4292D5538B700B3A177 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BE48A2D52CABB00843482 /* Pet.swift */; };
@@ -427,6 +428,7 @@
 				1AB7066D2D564A61006A9F4B /* PreviewUsers.swift in Sources */,
 				1A2BE4352D52437D00843482 /* LoadingView.swift in Sources */,
 				1AB706652D5649D1006A9F4B /* PetCardView.swift in Sources */,
+				42F037142D564BA2006CC1A5 /* PetsGridView.swift in Sources */,
 				1AB7064E2D56432F006A9F4B /* PetDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
