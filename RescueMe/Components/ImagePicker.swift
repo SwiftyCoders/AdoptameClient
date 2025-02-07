@@ -6,7 +6,6 @@ struct ImagePicker: View {
     @State private var selectedImageData: Data? = nil
     
     var body: some View {
-        
         ZStack {
             if let selectedImageData,
                let uiImage = UIImage(data: selectedImageData) {
@@ -36,7 +35,7 @@ struct ImagePicker: View {
                     .foregroundColor(.white)
                     .font(.title)
                     .frame(width: 40, height: 40)
-                    .background(Color(red: 222 / 255, green: 153 / 255, blue: 54 / 255))
+                    .background(.primaryOrange)
                     .cornerRadius(10)
             }
             .onChange(of: selectedItem) { _, newItem in
