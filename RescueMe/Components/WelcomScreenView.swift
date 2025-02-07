@@ -1,11 +1,63 @@
 import SwiftUI
 
-struct WelcomScreenView: View {
+struct WelcomScreenView<BackgroundContent: View, ForegroundContent: View>: View {
+    var background: Color
+    var heightRatio: CGFloat
+    var curveOffset: CGFloat
+    let backgroundContent: BackgroundContent
+    let foregroundContent: ForegroundContent
+    
+    init(
+        _ background: Color = .orange,
+        heightRatio: CGFloat = 2,
+        curveOffset: CGFloat = 80,
+        @ViewBuilder backgroundContent: () -> BackgroundContent,
+        @ViewBuilder foregroundContent: () -> ForegroundContent
+    ) {
+        self.background = background
+        self.heightRatio = heightRatio
+        self.curveOffset = curveOffset
+        self.backgroundContent = backgroundContent()
+        self.foregroundContent = foregroundContent()
+    }
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            background
+            backgroundContent
+                .padding(.top, 80)
+            VStack {
+                Spacer()
+                RoundedBottomRectangle(curveOffset: curveOffset)
+                    .fill(.background)
+                    .containerRelativeFrame(.vertical) { num, _ in
+                        num / heightRatio
+                    }
+                    .shadow(radius: 20)
+                    .overlay(alignment: .center) {
+                        foregroundContent
+                    }
+            }
+        }
+        .ignoresSafeArea()
     }
 }
 
 #Preview {
-    WelcomScreenView()
+    WelcomScreenView {
+        Image(.iphoneScreenShot)
+            .resizable()
+    } foregroundContent: {
+        VStack(spacing: 0) {
+            IntroDescriptionView(title: "Adoptify - Where Furry Tales Begin", description: "Embark on a heartwarming journey to find your perfect companion. Swipe, match, and open your heart to a new furry friend sad")
+            HStack {
+                Button("action 1") { }
+                    .buttonPrimaryStyle()
+                Button("action 2") { }
+                    .buttonSecundaryStyle()
+            }
+            .padding(.bottom, 20)
+            .safeAreaPadding()
+        }
+    }
 }
