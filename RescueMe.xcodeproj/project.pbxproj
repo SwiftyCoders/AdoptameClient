@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1A2996B12D56C5E100C0E407 /* SCNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = 1A2996B02D56C5E100C0E407 /* SCNetwork */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		1A2BE33F2D51581C00843482 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A2996B12D56C5E100C0E407 /* SCNetwork in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = RescueMe;
 			packageProductDependencies = (
+				1A2996B02D56C5E100C0E407 /* SCNetwork */,
 			);
 			productName = RescueMe;
 			productReference = 1A2BE32E2D51581B00843482 /* RescueMe.app */;
@@ -195,6 +201,9 @@
 			);
 			mainGroup = 1A2BE3252D51581B00843482;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				1A2996AF2D56C5E100C0E407 /* XCRemoteSwiftPackageReference "SCNetworking" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1A2BE32F2D51581B00843482 /* Products */;
 			projectDirPath = "";
@@ -558,6 +567,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1A2996AF2D56C5E100C0E407 /* XCRemoteSwiftPackageReference "SCNetworking" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Bitos88/SCNetworking";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1A2996B02D56C5E100C0E407 /* SCNetwork */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A2996AF2D56C5E100C0E407 /* XCRemoteSwiftPackageReference "SCNetworking" */;
+			productName = SCNetwork;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1A2BE3262D51581B00843482 /* Project object */;
 }
