@@ -1,10 +1,3 @@
-//
-//  ShelterInformationView.swift
-//  RescueMe
-//
-//  Created by Laura Isabel Rojas Bustamante on 10/02/25.
-//
-
 import SwiftUI
 
 struct ShelterInformationView: View {
@@ -14,55 +7,56 @@ struct ShelterInformationView: View {
         
         HStack(alignment: .top, spacing: 16) {
             VStack {
-                Image(.shelterImageMock)
+                Image(.hiro1)
                     .resizable()
                     .scaledToFill()
                     .frame(width: 80, height: 80)
                     .clipShape(Circle())
+                    .accessibilityLabel("Shelter image of \(shelter.name)")
             }
             
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 10) {
                 Text(shelter.name)
-                    .font(.title2)
+                    .font(.title3)
                     .bold()
-                    .padding(.bottom)
+                    .accessibilityLabel("Shelter name: \(shelter.name)")
+                    .accessibilityAddTraits(.isHeader)
+                    .accessibilitySortPriority(1)
                 
-                HStack {
-                    Image(systemName: "mappin.and.ellipse")
-                        .foregroundStyle(.primaryOrange)
-                    
-                    Text(shelter.formattedAddress)
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                }
-                
-                HStack {
-                    Image(systemName: "phone.badge.waveform.fill")
-                        .foregroundStyle(.primaryOrange)
-                    Text(shelter.formattedPhone)
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                }
-                HStack {
-                    Image(systemName: "envelope.fill")
-                        .foregroundStyle(.primaryOrange)
-                    Text(shelter.contactEmail)
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                    
-                }
-                HStack {
-                    Image(systemName: "globe")
-                        .foregroundStyle(.primaryOrange)
-                    Text(shelter.formattedWebsite)
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                }
+                shelterInfoRow("mappin.and.ellipse", text: shelter.formattedAddress)
+                shelterInfoRow("phone.badge.waveform.fill", text: shelter.formattedPhone)
+                shelterInfoRow("envelope.fill", text: shelter.contactEmail)
+                shelterInfoRow("globe", text: shelter.formattedWebsite)
             }
         }
         .padding(.vertical)
         .padding(.horizontal)
         .background(Color.white)
+        .clipShape(RoundedRectangle(cornerRadius: 4))
+        .accessibilityElement(children: .combine)
+    }
+    
+    private func shelterInfoRow(_ iconName: String, text: String) -> some View {
+        return HStack {
+            Image(systemName: iconName)
+                .foregroundStyle(.primaryOrange)
+                .accessibilityHidden(true)
+            Text(text)
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+                .dynamicTypeSize(.medium ... .accessibility3)
+        }
+        .accessibilityLabel("\(iconDescription(iconName)): \(text)")
+    }
+    
+    private func iconDescription(_ iconName: String) -> String {
+        switch iconName {
+        case "mappin.and.ellipse": return "Address"
+        case "phone.badge.waveform.fill": return "Phone number"
+        case "envelope.fill": return "Email address"
+        case "globe": return "Website"
+        default: return "Information"
+        }
     }
 }
 
