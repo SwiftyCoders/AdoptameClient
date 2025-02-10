@@ -6,22 +6,25 @@ struct ImageItem: Identifiable, Hashable {
 }
 
 struct ImageCarousel<ImageType: Identifiable & Hashable>: View {
+    @State private var currentIndex = 0
+    @State private var timer: Timer?
     let images: [ImageType]
     let imageProvider: (ImageType) -> Image
 
     var body: some View {
         VStack {
-            TabView {
-                ForEach(images) { imageItem in
+            TabView(selection: $currentIndex) {
+                ForEach(images.indices, id: \.self) { index in
                     VStack {
-                        imageProvider(imageItem)
+                        imageProvider(images[index])
                             .resizable()
                             .scaledToFit()
                     }
+                    .tag(index)
                 }
             }
             .tabViewStyle(.page)
-            .indexViewStyle(.page(backgroundDisplayMode: .always))
+            .indexViewStyle(.page(backgroundDisplayMode: .never))
             .background {
                 ZStack {
                     if let bgImage = images.first {
@@ -35,8 +38,27 @@ struct ImageCarousel<ImageType: Identifiable & Hashable>: View {
             .frame(maxWidth: .infinity, maxHeight: 300)
             .padding()
             .accessibilityLabel("Contiene las imágenes de la mascota")
+            .onAppear {
+                startAutoScroll()
+            }
+            .onDisappear {
+                stopAutoScroll()
+            }
         }
         Spacer()
+    }
+    
+    private func startAutoScroll() {
+        timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
+            withAnimation {
+                currentIndex = (currentIndex + 1) % images.count
+            }
+        }
+    }
+    
+    func stopAutoScroll() {
+        timer = nil
+        timer?.invalidate()
     }
 }
 
