@@ -1,0 +1,15 @@
+{
+  "originHash" : "41d15fdafe6013347814250589fe67b781123764e79341999c58797f83561bbc",
+  "pins" : [
+    {
+      "identity" : "scnetworking",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Bitos88/SCNetworking",
+      "state" : {
+        "branch" : "main",
+        "revision" : "4e1b23ad80eb478c83fb971424f871f17c5a6f23"
+      }
+    }
+  ],
+  "version" : 3
+}
