@@ -2,6 +2,7 @@ import SwiftUI
 
 struct HomeBannerView: View {
     @State private var currentIndex = 0
+    @State private var timer: Timer?
     private let banners: [ImageResource] = [.banners1, .banners2, .banners3]
     private let bannerDescriptions: [String] = [
             "Promoción especial en productos DogsFest",
@@ -49,6 +50,11 @@ struct HomeBannerView: View {
                 currentIndex = (currentIndex + 1) % banners.count
             }
         }
+    }
+    
+    func stopAutoScroll() {
+        timer = nil
+        timer?.invalidate()
     }
 }
 
