@@ -4,7 +4,7 @@ enum APIEndpoint {
     static let baseURL = URL(string: "https://f8cf-79-154-216-32.ngrok-free.app")!
 
     // MARK: - Pets
-    static let getAllPets = baseURL.appendingPathComponent("pets")
+    static let getAllPets = baseURL.appending(path: "pets")
     static func getPet(id: UUID) -> URL {
         baseURL.appending(path: "pets/\(id)")
     }
@@ -22,7 +22,7 @@ enum APIEndpoint {
     }
 
     // MARK: - Shelters
-    static let getAllShelters = baseURL.appendingPathComponent("shelters")
+    static let getAllShelters = baseURL.appending(path: "shelters")
     static func getShelter(id: UUID) -> URL {
         baseURL.appending(path: "shelters/\(id)")
     }
