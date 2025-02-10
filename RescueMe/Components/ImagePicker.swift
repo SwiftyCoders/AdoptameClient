@@ -4,6 +4,7 @@ import PhotosUI
 struct ImagePicker: View {
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var selectedImageData: Data? = nil
+    var size: Double = 220
     
     var body: some View {
         ZStack {
@@ -12,14 +13,14 @@ struct ImagePicker: View {
                 Image(uiImage: uiImage)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 220, height: 220)
+                    .frame(width: size, height: size)
                     .clipShape(Circle())
                     .shadow(radius: 10)
             } else {
                 Text("Selecciona tu imagen de perfil")
                     .font(.title3)
                     .multilineTextAlignment(.center)
-                    .frame(width: 220, height: 220)
+                    .frame(width: size, height: size)
                     .clipShape(Circle())
                     .shadow(radius: 10)
                     .background(Color.gray.opacity(0.3))
@@ -45,7 +46,7 @@ struct ImagePicker: View {
                     }
                 }
             }
-            .offset(x: 80, y: 80)
+            .offset(x: 60, y: 70)
         }
     }
 }

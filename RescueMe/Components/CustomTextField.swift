@@ -20,6 +20,7 @@ struct CustomTextField: View {
                 Image(systemName: systemName)
                     .opacity(0.7)
                 TextField(prompt, text: $input)
+                    .autocorrectionDisabled()
                 Spacer()
                 clearTextButton
             }
