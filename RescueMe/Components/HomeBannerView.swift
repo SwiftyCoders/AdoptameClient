@@ -45,7 +45,7 @@ struct HomeBannerView: View {
     }
     
     private func autoScroll() {
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { time in
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { time in
             withAnimation(.easeInOut) {
                 currentIndex = (currentIndex + 1) % banners.count
             }
