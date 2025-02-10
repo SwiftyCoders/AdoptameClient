@@ -7,6 +7,7 @@ struct ImageItem: Identifiable, Hashable {
 
 struct ImageCarousel<ImageType: Identifiable & Hashable>: View {
     @State private var currentIndex = 0
+    @State private var timer: Timer?
     let images: [ImageType]
     let imageProvider: (ImageType) -> Image
 
@@ -40,16 +41,24 @@ struct ImageCarousel<ImageType: Identifiable & Hashable>: View {
             .onAppear {
                 startAutoScroll()
             }
+            .onDisappear {
+                stopAutoScroll()
+            }
         }
         Spacer()
     }
     
     private func startAutoScroll() {
-        Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
             withAnimation {
                 currentIndex = (currentIndex + 1) % images.count
             }
         }
+    }
+    
+    func stopAutoScroll() {
+        timer = nil
+        timer?.invalidate()
     }
 }
 
