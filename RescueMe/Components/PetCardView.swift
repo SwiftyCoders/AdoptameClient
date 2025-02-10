@@ -12,7 +12,6 @@ struct PetCardView: View {
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .aspectRatio(1, contentMode: .fill)
                     .clipShape(RoundedRectangle(cornerRadius: 4))
-                
                 HeartButton {}
                 .padding(8)
             }
@@ -31,6 +30,7 @@ struct PetCardView: View {
                         Text(String(format: "%.1f km", petModel.latitude))
                         Text("•")
                         Text(petModel.breed)
+                            .lineLimit(1)
                     }
                     .font(.footnote)
                     .foregroundColor(.secondary)
