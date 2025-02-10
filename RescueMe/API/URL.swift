@@ -6,39 +6,39 @@ enum APIEndpoint {
     // MARK: - Pets
     static let getAllPets = baseURL.appendingPathComponent("pets")
     static func getPet(id: UUID) -> URL {
-        baseURL.appendingPathComponent("pets/\(id)")
+        baseURL.appending(path: "pets/\(id)")
     }
     static func createPet() -> URL {
-        baseURL.appendingPathComponent("pets")
+        baseURL.appending(path: "pets")
     }
     static func replacePet(id: UUID) -> URL {
-        baseURL.appendingPathComponent("pets/\(id)")
+        baseURL.appending(path: "pets/\(id)")
     }
     static func updatePet(id: UUID) -> URL {
-        baseURL.appendingPathComponent("pets/\(id)")
+        baseURL.appending(path: "pets/\(id)")
     }
     static func deletePet(id: UUID) -> URL {
-        baseURL.appendingPathComponent("pets/\(id)")
+        baseURL.appending(path: "pets/\(id)")
     }
 
     // MARK: - Shelters
     static let getAllShelters = baseURL.appendingPathComponent("shelters")
     static func getShelter(id: UUID) -> URL {
-        baseURL.appendingPathComponent("shelters/\(id)")
+        baseURL.appending(path: "shelters/\(id)")
     }
     static func createShelter() -> URL {
-        baseURL.appendingPathComponent("shelters")
+        baseURL.appending(path: "shelters")
     }
     static func replaceShelter(id: UUID) -> URL {
-        baseURL.appendingPathComponent("shelters/\(id)")
+        baseURL.appending(path: "shelters/\(id)")
     }
     static func updateShelter(id: UUID) -> URL {
-        baseURL.appendingPathComponent("shelters/\(id)")
+        baseURL.appending(path: "shelters/\(id)")
     }
     static func deleteShelter(id: UUID) -> URL {
-        baseURL.appendingPathComponent("shelters/\(id)")
-    }    
+        baseURL.appending(path: "shelters/\(id)")
+    }
     static func petsFromShelter(id: UUID) -> URL {
-        baseURL.appendingPathComponent("shelters/\(id)/pets")
+        baseURL.appending(path: "shelters/\(id)/pets")
     }
 }
