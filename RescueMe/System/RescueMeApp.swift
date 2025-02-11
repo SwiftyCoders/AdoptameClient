@@ -11,7 +11,7 @@ import SwiftUI
 struct RescueMeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MapView(shelters: Shelter.previewShelters)
         }
     }
 }

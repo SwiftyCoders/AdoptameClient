@@ -1,4 +1,5 @@
 import Foundation
+import MapKit
 
 struct Shelter: Identifiable, Hashable {
     let id: UUID
@@ -12,4 +13,8 @@ struct Shelter: Identifiable, Hashable {
     let website: String?
     let image: String?
     let pets: [Pet]
+    
+    var coordinate: CLLocationCoordinate2D {
+            CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        }
 }
