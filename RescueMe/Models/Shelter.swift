@@ -12,4 +12,16 @@ struct Shelter: Identifiable, Hashable {
     let website: String?
     let image: String?
     let pets: [Pet]
+    
+    var formattedAddress: String {
+        address ?? "No address provided"
+    }
+    
+    var formattedPhone: String {
+        phone ?? "No phone number provided"
+    }
+    
+    var formattedWebsite: String {
+        website ?? "No website provided"
+    }
 }
