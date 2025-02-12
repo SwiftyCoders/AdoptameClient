@@ -31,7 +31,6 @@ struct ShelterInformationView: View {
         }
         .padding(.vertical)
         .padding(.horizontal)
-        .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 4))
         .accessibilityElement(children: .combine)
     }
