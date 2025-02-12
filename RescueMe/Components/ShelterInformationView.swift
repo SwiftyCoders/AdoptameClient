@@ -4,7 +4,6 @@ struct ShelterInformationView: View {
     var shelter: Shelter
     
     var body: some View {
-        
         HStack(alignment: .top, spacing: 16) {
             VStack {
                 Image(.hiro1)

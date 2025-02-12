@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ShelterSegmentedView: View {
     @State private var selection = 0
+    
     let shelter: Shelter = .previewShelter
     
     var body: some View {
@@ -14,7 +15,6 @@ struct ShelterSegmentedView: View {
                     .tag(1)
                     .accessibilityLabel("Adoption Policy Information")
             }
-            .foregroundStyle(.red)
             .pickerStyle(.segmented)
             .safeAreaPadding(.horizontal)
             .onAppear {

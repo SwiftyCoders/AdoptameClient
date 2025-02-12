@@ -47,9 +47,11 @@ struct WelcomScreenView<BackgroundContent: View, ForegroundContent: View>: View 
     WelcomScreenView {
         Image(.iphoneScreenShot)
             .resizable()
+            .scaledToFit()
     } foregroundContent: {
         VStack(spacing: 0) {
-            IntroDescriptionView(title: "Adoptify - Where Furry Tales Begin", description: "Embark on a heartwarming journey to find your perfect companion. Swipe, match, and open your heart to a new furry friend sad")
+            Spacer()
+            IntroDescription(title: "Adoptify - Where Furry Tales Begin", description: "Embark on a heartwarming journey to find your perfect companion. Swipe, match, and open your heart to a new furry friend sad")
             HStack {
                 Button("action 1") { }
                     .buttonPrimaryStyle()

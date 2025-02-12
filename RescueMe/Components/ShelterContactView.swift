@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct ShelterContactView: View {
-    
     var size: Double = 40
     var shelter: Shelter
     
@@ -115,7 +114,7 @@ struct ShelterContactView: View {
 }
 
 #Preview {
-    ShelterContactView(shelter: .previewShelter)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.gray.opacity(0.3))
+    VStack {
+        ShelterContactView(shelter: .previewShelter)
+    }
 }
