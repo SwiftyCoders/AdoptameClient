@@ -111,7 +111,7 @@ struct ShelterFormView: View {
     
     var shelterForm: some View {
         Form {
-            CustomTextField(label: "Name", prompt: "Name", systemName: "person", isFocused: focus == .name, input: $name) { name in
+            CustomTextField(input: $name, label: "Name", prompt: "Name", systemName: "person", isFocused: focus == .name) { name in
                 validateName(name: name)
             }
             .focused($focus, equals: .name)
@@ -119,7 +119,7 @@ struct ShelterFormView: View {
             .accessibilityLabel("Name field")
             .accessibilityHint("Enter the name of the shelter.")
 
-            CustomTextField(label: "Address", prompt: "Address", systemName: "location", isFocused: focus == .address, input: $address) { _ in
+            CustomTextField(input: $address, label: "Address", prompt: "Address", systemName: "location", isFocused: focus == .address) { _ in
                 nil
             }
             .focused($focus, equals: .address)
@@ -127,7 +127,7 @@ struct ShelterFormView: View {
             .accessibilityLabel("Address field")
             .accessibilityHint("Enter the shelter's address.")
             
-            CustomTextField(label: "Description", prompt: "Description", systemName: "person", isFocused: focus == .description, input: $description) { name in
+            CustomTextField(input: $description, label: "Description", prompt: "Description", systemName: "person", isFocused: focus == .description) { name in
                 nil
             }
             .focused($focus, equals: .description)
@@ -135,7 +135,7 @@ struct ShelterFormView: View {
             .accessibilityLabel("Description field")
             .accessibilityHint("Describe the shelter and its mission.")
             
-            CustomTextField(label: "Email", prompt: "Email", systemName: "envelope", isFocused: true, input: $email) { name in
+            CustomTextField(input: $email, label: "Email", prompt: "Email", systemName: "envelope", isFocused: true) { name in
                 nil
             }
             .focused($focus, equals: .email)
@@ -144,7 +144,7 @@ struct ShelterFormView: View {
             .accessibilityLabel("Email field")
             .accessibilityHint("Enter the shelter's contact email.")
 
-            CustomTextField(label: "Website", prompt: "Website", systemName: "network", isFocused: true, input: $website) { name in
+            CustomTextField(input: $website, label: "Website", prompt: "Website", systemName: "network", isFocused: true) { name in
                 nil
             }
             .focused($focus, equals: .web)

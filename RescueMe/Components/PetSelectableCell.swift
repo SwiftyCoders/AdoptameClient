@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct PetsGridView: View {
+struct PetSelectableCell: View {
     
     enum PetsGridType {
         case rectangle
@@ -76,16 +76,16 @@ struct PetsGridView: View {
 #Preview {
     VStack(spacing: 32) {
         HStack(spacing: 16) {
-            PetsGridView(emoji: "🐈", petCategory: "Cats", isSelected: false, gridType: .rectangle, onTapAction: {})
-            PetsGridView(emoji: "🐕", petCategory: "Dogs", isSelected: true, gridType: .rectangle, onTapAction: {})
-            PetsGridView(emoji: "🦅", petCategory: "Birds", isSelected: false, gridType: .rectangle, onTapAction: {})
+            PetSelectableCell(emoji: "🐈", petCategory: "Cats", isSelected: false, gridType: .rectangle, onTapAction: {})
+            PetSelectableCell(emoji: "🐕", petCategory: "Dogs", isSelected: true, gridType: .rectangle, onTapAction: {})
+            PetSelectableCell(emoji: "🦅", petCategory: "Birds", isSelected: false, gridType: .rectangle, onTapAction: {})
             
         }
         
         HStack(spacing: 16) {
-            PetsGridView(emoji: "🐈", petCategory: "Cats", isSelected: true, gridType: .circle, onTapAction: {})
-            PetsGridView(emoji: "🐕", petCategory: "Dogs", isSelected: false, gridType: .circle, onTapAction: {})
-            PetsGridView(emoji: "🦅", petCategory: "Birds", isSelected: false, gridType: .circle, onTapAction: {})
+            PetSelectableCell(emoji: "🐈", petCategory: "Cats", isSelected: true, gridType: .circle, onTapAction: {})
+            PetSelectableCell(emoji: "🐕", petCategory: "Dogs", isSelected: false, gridType: .circle, onTapAction: {})
+            PetSelectableCell(emoji: "🦅", petCategory: "Birds", isSelected: false, gridType: .circle, onTapAction: {})
         }
     }
 }

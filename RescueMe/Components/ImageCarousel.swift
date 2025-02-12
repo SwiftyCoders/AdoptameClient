@@ -8,6 +8,7 @@ struct ImageItem: Identifiable, Hashable {
 struct ImageCarousel<ImageType: Identifiable & Hashable>: View {
     @State private var currentIndex = 0
     @State private var timer: Timer?
+    
     let images: [ImageType]
     let imageProvider: (ImageType) -> Image
 

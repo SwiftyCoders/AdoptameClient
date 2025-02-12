@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  RescueMe
-//
-//  Created by Alberto Alegre Bravo on 3/2/25.
-//
-
 import SwiftUI
 
 struct ContentView: View {
