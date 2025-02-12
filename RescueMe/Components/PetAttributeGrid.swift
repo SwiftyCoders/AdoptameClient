@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct PetAttributeGrid: View {
-    
     enum AttributeTitle: String {
         case gender = "Gender"
         case age = "Age"
