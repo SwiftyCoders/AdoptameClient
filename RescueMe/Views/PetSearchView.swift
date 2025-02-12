@@ -13,28 +13,13 @@ struct PetSearchView: View {
     @State private var selectedAges: Set<String> = []
     
     @State private var selectedAddress = ""
+    @State var coordinates: (lat: Double, lon: Double) = (0, 0)
     @State private var showLocationSearchView = false
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                Text("Location")
-                    .font(.headline)
-                    .bold()
-                Button {
-                    showLocationSearchView.toggle()
-                } label: {
-                    HStack {
-                        Image(systemName: "mappin.and.ellipse")
-                        Text(selectedAddress.isEmpty ? "Choose your location" : selectedAddress)
-                            .foregroundColor(selectedAddress.isEmpty ? .gray : .primary)
-                        Spacer()
-                    }
-                    .padding()
-                    .frame(height: 50)
-                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.gray.opacity(0.1)))
-                }
-                
+                locationSection
                 filterSection(title: "Pet Types", options: petTypes, selectedOptions: $selectedPetTypes)
                 filterSection(title: "Gender", options: petGenders, selectedOptions: $selectedGenders)
                 filterSection(title: "Size", options: petSizes, selectedOptions: $selectedSizes)
@@ -56,6 +41,26 @@ struct PetSearchView: View {
         }
     }
     
+    @ViewBuilder
+    var locationSection: some View {
+        Text("Location")
+            .font(.headline)
+            .bold()
+        Button {
+            showLocationSearchView.toggle()
+        } label: {
+            HStack {
+                Image(systemName: "mappin.and.ellipse")
+                Text(selectedAddress.isEmpty ? "Choose your location" : selectedAddress)
+                    .foregroundColor(selectedAddress.isEmpty ? .gray : .primary)
+                Spacer()
+            }
+            .padding()
+            .frame(height: 50)
+            .background(RoundedRectangle(cornerRadius: 10).fill(Color.gray.opacity(0.1)))
+        }
+    }
+    
     private func filterSection(title: String,
                                options: [String],
                                selectedOptions: Binding<Set<String>>) -> some View {
@@ -66,7 +71,7 @@ struct PetSearchView: View {
                 .padding(.bottom)
             
             LazyVGrid(columns: columns) {
-                ForEach(options, id: \ .self) { option in
+                ForEach(options, id: \.self) { option in
                     Button {
                         if selectedOptions.wrappedValue.contains(option) {
                             selectedOptions.wrappedValue.remove(option)

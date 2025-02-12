@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct LocationSearchView: View {
-    @State var locationVM = LocaltionSearchManager()
+    @State var locationVM = LocationSearchManager()
     @Binding var selectedAddress: String
     @Environment(\.dismiss) var dismiss
     @FocusState var focus: ShelterField?
@@ -16,7 +16,8 @@ struct LocationSearchView: View {
                             Text(result.subtitle)
                         }
                         .onTapGesture {
-                            selectedAddress = result.title
+                            selectedAddress = "\(result.title) \(result.subtitle)"
+                            locationVM.coordinates = (lat: result.latitude, lon: result.longitude)
                             dismiss()
                         }
                     }
