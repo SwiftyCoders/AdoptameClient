@@ -12,7 +12,7 @@ struct HeartButton: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: size)
-                .padding(10)
+                .padding(6)
                 .background(.orange)
                 .clipShape(Circle())
                 .foregroundStyle(.white)

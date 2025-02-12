@@ -1,7 +1,6 @@
 import SwiftUI
 
-struct PetAttributeGrid: View {
-    
+struct PetAttributeGridCell: View {
     enum AttributeTitle: String {
         case gender = "Gender"
         case age = "Age"
@@ -31,8 +30,8 @@ struct PetAttributeGrid: View {
                 .font(.title3)
                 .bold()
         }
-        .frame(height: 110)
-        .frame(minWidth: 150, maxWidth: 200)
+        .frame(height: 90)
+        .frame(minWidth: 70, maxWidth: 170)
         .background {
             RoundedRectangle(cornerRadius: 4)
                 .fill(title.attributeColor.opacity(0.15))
@@ -42,11 +41,15 @@ struct PetAttributeGrid: View {
 
 #Preview {
     VStack {
-        PetAttributeGrid(title: .gender, value: "Male")
+        HStack {
+            PetAttributeGridCell(title: .gender, value: "Male")
+            PetAttributeGridCell(title: .gender, value: "Male")
+            PetAttributeGridCell(title: .gender, value: "Male")
+        }
         Button("Cat", systemImage: "cat") { }
             .buttonSelectStyle(true)
         Button("Cat", systemImage: "cat") { }
             .buttonSelectStyle()
     }
-    
+    .safeAreaPadding(.horizontal)
 }

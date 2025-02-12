@@ -1,12 +1,12 @@
 import SwiftUI
 
-struct IntroDescriptionView: View {
+struct IntroDescription: View {
     var title: String
     var description: String
     var lineSpacing: CGFloat = 10
+    
     var body: some View {
         VStack(spacing: 20) {
-            Spacer()
             Text(title)
                 .font(.title)
                 .bold()
@@ -23,5 +23,5 @@ struct IntroDescriptionView: View {
 }
 
 #Preview {
-    IntroDescriptionView(title: "Adoptify - Where Furry Tales Begin", description: "Embark on a heartwarming journey to find your perfect companion. Swipe, match, and open your heart to a new furry friend ")
+    IntroDescription(title: "Adoptify - Where Furry Tales Begin", description: "Embark on a heartwarming journey to find your perfect companion. Swipe, match, and open your heart to a new furry friend ")
 }

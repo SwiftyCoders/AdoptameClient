@@ -1,20 +1,18 @@
 import SwiftUI
 
-struct PetCardView: View {
+struct PetCard: View {
     var petModel: Pet
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            ZStack(alignment: .topTrailing) {
-                Image(.dogImageMock)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .aspectRatio(1, contentMode: .fill)
-                    .clipShape(RoundedRectangle(cornerRadius: 4))
-                HeartButton {}
-                .padding(8)
-            }
+            Image(.dogImageMock)
+                .resizable()
+                .scaledToFit()
+                .clipShape(RoundedRectangle(cornerRadius: 4))
+                .overlay(alignment: .topTrailing) {
+                    HeartButton {}
+                        .padding(10)
+                }
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(petModel.name)
@@ -45,9 +43,14 @@ struct PetCardView: View {
     ScrollView {
         LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 16), count: 2), spacing: 16) {
             ForEach(0..<9, id: \.self) { _ in
-                PetCardView(petModel: .previewPet)
+                PetCard(petModel: .previewPet)
             }
         }
-        .padding(16)
+        .safeAreaPadding()
     }
+}
+
+#Preview {
+    PetCard(petModel: .previewPet)
+        .safeAreaPadding(.horizontal)
 }
