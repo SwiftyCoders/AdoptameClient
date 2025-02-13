@@ -19,7 +19,8 @@ struct MapView: View {
             }
             
             ForEach(sheltersInCircle) { shelter in
-                Marker(shelter.name, coordinate: shelter.coordinate)
+                Marker(shelter.name, systemImage: "pawprint.fill", coordinate: shelter.coordinate)
+                    .tint(.primaryOrange)
                     .tag(shelter)
             }
         }
@@ -58,7 +59,7 @@ struct MapView: View {
             sheltersInCircle = getSheltersInCircle()
         }
         .sheet(item: $selectedPlaceMark) { shelter in
-            Text(shelter.name)
+            ShelterDetailView(shelter: shelter)
         }
     }
     

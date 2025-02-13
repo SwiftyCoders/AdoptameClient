@@ -22,6 +22,10 @@ struct Shelter: Identifiable, Hashable {
         phone ?? "No phone number provided"
     }
     
+    var formattedWebsite: String {
+        website ?? "No website provided"
+    }
+    
     var coordinate: CLLocationCoordinate2D {
             CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         }
