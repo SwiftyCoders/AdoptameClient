@@ -1,15 +1,15 @@
 import SwiftUI
 
 struct CustomTextField: View {
+    @Binding var input: String
+    @State private var errorText = false
+    @State private var errorMsg = ""
+    
     let label: String
     let prompt: String
     let systemName: String
     let isFocused: Bool
-    @Binding var input: String
     let validate: (String) -> LocalizedStringResource?
-    
-    @State private var errorText = false
-    @State private var errorMsg = ""
     
     var body: some View {
         
@@ -76,11 +76,11 @@ struct CustomTextField: View {
     @Previewable @State var campo = ""
     Form {
         CustomTextField(
+            input: $campo,
             label: "Nombre",
             prompt: "Ingresa tu nombre",
             systemName: "person",
-            isFocused: true,
-            input: $campo
+            isFocused: true
         ) { value in
             if value.isEmpty {
                 return "cannot be empty."
@@ -89,11 +89,11 @@ struct CustomTextField: View {
             }
         }
         CustomTextField(
+            input: $campo,
             label: "Email",
             prompt: "Ingresa tu email",
             systemName: "envelope",
-            isFocused: true,
-            input: $campo
+            isFocused: true
         ) { value in
             if value.isEmpty {
                 return "Lo de sexy... lo dejamos para luego"

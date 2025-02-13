@@ -1,8 +1,9 @@
 import SwiftUI
 
-struct HomeBannerView: View {
+struct HomeBannerCarousel: View {
     @State private var currentIndex = 0
     @State private var timer: Timer?
+    
     private let banners: [ImageResource] = [.banners1, .banners2, .banners3]
     private let bannerDescriptions: [String] = [
             "Promoción especial en productos DogsFest",
@@ -45,7 +46,7 @@ struct HomeBannerView: View {
     }
     
     private func autoScroll() {
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { time in
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
             withAnimation(.easeInOut) {
                 currentIndex = (currentIndex + 1) % banners.count
             }
@@ -59,6 +60,6 @@ struct HomeBannerView: View {
 }
 
 #Preview {
-    HomeBannerView()
+    HomeBannerCarousel()
         .safeAreaPadding()
 }
