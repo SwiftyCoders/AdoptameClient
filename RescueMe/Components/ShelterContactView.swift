@@ -1,24 +1,24 @@
 import SwiftUI
 
 struct ShelterContactView: View {
-    var size: Double = 40
+    var size: Double = 30
     var shelter: Shelter
     
     var body: some View {
-        HStack(spacing: 24) {
-            contactButton( systemImageName: "phone.circle.fill", buttonLabel: "Phone", backgroundColor: .green, isDisabled: disabledPhoneButton) {
+        HStack(spacing: 36) {
+            contactButton( systemImageName: "phone.circle.fill", buttonLabel: "Phone", backgroundColor: .primaryOrange, isDisabled: disabledPhoneButton) {
                 makeCall(phoneNumber: shelter.phone)
             }
             .accessibilityLabel("Call shelter")
             .accessibilityHint(disabledPhoneButton ? "Phone number not available" : "Double tap to call \(shelter.phone ?? "")")
             
-            contactButton(systemImageName: "envelope.fill", buttonLabel: "Email", backgroundColor: .blue, isDisabled: disabledEmailButton) {
+            contactButton(systemImageName: "envelope.fill", buttonLabel: "Email", backgroundColor: .primaryOrange, isDisabled: disabledEmailButton) {
                 sendEmail(email: shelter.contactEmail)
             }
             .accessibilityLabel("Email shelter")
             .accessibilityHint(disabledEmailButton ? "Email not available" : "Double tap to send email to \(shelter.contactEmail)")
             
-            contactButton(systemImageName: "globe", buttonLabel: "Website", backgroundColor: .red, isDisabled: disabledWebSiteButton) {
+            contactButton(systemImageName: "globe", buttonLabel: "Website", backgroundColor: .primaryOrange, isDisabled: disabledWebSiteButton) {
                 openWebSite(webSite: shelter.contactEmail)
             }
             .accessibilityLabel("Website shelter")
@@ -44,12 +44,13 @@ struct ShelterContactView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: size, height: size)
-                    .padding()
+                    .padding(12)
                     .background(isDisabled ? Color.gray : backgroundColor)
                     .clipShape(Circle())
                     .foregroundColor(.white)
                     .accessibilityHidden(true)
                 Text(buttonLabel)
+                    .font(.footnote)
                     .foregroundColor(.primary)
                     .font(.caption)
                     .accessibilityHidden(true)

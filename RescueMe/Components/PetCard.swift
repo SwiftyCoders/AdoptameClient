@@ -10,8 +10,10 @@ struct PetCard: View {
                 .scaledToFit()
                 .clipShape(RoundedRectangle(cornerRadius: 4))
                 .overlay(alignment: .topTrailing) {
-                    HeartButton {}
-                        .padding(10)
+                    HeartButton {
+                        
+                    }
+                    .padding(10)
                 }
             
             VStack(alignment: .leading, spacing: 4) {

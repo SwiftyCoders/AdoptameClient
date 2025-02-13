@@ -8,7 +8,12 @@ struct PetsGrid: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(shelter.pets) { pet in
-                    PetCard(petModel: pet)
+                    Button {
+                        
+                    } label: {
+                        PetCard(petModel: pet)
+                    }
+                    .foregroundStyle(.primary)
                 }
             }
             .padding(16)
