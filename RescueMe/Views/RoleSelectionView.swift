@@ -38,7 +38,7 @@ struct RoleSelectionView: View {
         .safeAreaPadding(.vertical, 30)
     }
     
-    private func introDescription(title: String, description: String, lineSpacing: CGFloat) ->some View {
+    private func introDescription(title: String, description: String, lineSpacing: CGFloat) -> some View {
         VStack(spacing: 20) {
             Text(title)
                 .font(.title)
@@ -51,7 +51,6 @@ struct RoleSelectionView: View {
         }
         .lineLimit(4)
         .lineSpacing(lineSpacing)
-        
     }
     
     private func roleButton(title: String, isSelected: Bool, action: @escaping () -> Void) -> some View {
