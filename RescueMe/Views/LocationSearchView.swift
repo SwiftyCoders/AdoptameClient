@@ -1,21 +1,33 @@
 import SwiftUI
 
 struct LocationSearchView: View {
-    @State var locationVM = LocaltionSearchManager()
+    @State var locationVM = LocationSearchManager()
     @Binding var selectedAddress: String
     @Environment(\.dismiss) var dismiss
     @FocusState var focus: ShelterField?
     
     var body: some View {
         NavigationStack {
-            List(locationVM.results) { result in
-                VStack(alignment: .leading) {
-                    Text(result.title)
-                    Text(result.subtitle)
-                }
-                .onTapGesture {
-                    selectedAddress = result.title
-                    dismiss()
+            VStack {
+                if !locationVM.results.isEmpty {
+                    List(locationVM.results) { result in
+                        VStack(alignment: .leading) {
+                            Text(result.title)
+                            Text(result.subtitle)
+                        }
+                        .onTapGesture {
+                            selectedAddress = "\(result.title) \(result.subtitle)"
+                            locationVM.coordinates = (lat: result.latitude, lon: result.longitude)
+                            dismiss()
+                        }
+                    }
+                } else {
+                    ContentUnavailableView(
+                        "Sin resultados",
+                        systemImage: "magnifyingglass",
+                        description: Text("Intenta buscar otra dirección o verifica la conexión.")
+                    )
+                    .padding()
                 }
             }
             .onAppear {

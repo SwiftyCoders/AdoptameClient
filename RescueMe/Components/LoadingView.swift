@@ -2,6 +2,7 @@ import SwiftUI
 
 struct LoadingView: View {
     @State var isAnimating = false
+    
     var color: Color = .primaryOrange
     var size: Double = 70
     
