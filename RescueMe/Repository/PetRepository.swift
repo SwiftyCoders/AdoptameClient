@@ -7,6 +7,9 @@ protocol PetRepositoryProtocol {
     func addNewPet(pet: PetDTO) async throws
     func deletePet(id: UUID) async throws
     func updatePet(id: UUID, pet: PetDTO) async throws
+    func getPetByType(specie: Specie) async throws -> [Pet]
+    func getNearestPets(latitude: Double, longitude: Double) async throws -> [Pet]
+    func getFilteredPets(latitude: Double, longitude: Double, specie: Specie, gender: PetGender, size: PetSize, age: PetAge, adoptionType: AdoptionType) async throws -> [Pet]
 }
 
 struct PetRepository: NetworkRepositoryProtocol, PetRepositoryProtocol {
@@ -30,5 +33,17 @@ struct PetRepository: NetworkRepositoryProtocol, PetRepositoryProtocol {
     
     func updatePet(id: UUID, pet: PetDTO) async throws {
         try await postJSON(urlReq: .APIRequest(url: APIEndpoint.replacePet(id: id), httpMethod: .put, body: pet), statusCode: 200)
+    }
+    
+    func getPetByType(specie: Specie) async throws -> [Pet] {
+        []
+    }
+    
+    func getNearestPets(latitude: Double, longitude: Double) async throws -> [Pet] {
+        []
+    }
+    
+    func getFilteredPets(latitude: Double, longitude: Double, specie: Specie, gender: PetGender, size: PetSize, age: PetAge, adoptionType: AdoptionType) async throws -> [Pet] {
+        []
     }
 }

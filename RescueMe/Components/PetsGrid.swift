@@ -7,7 +7,7 @@ struct PetsGrid: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 16) {
-                ForEach(shelter.pets) { pet in
+                ForEach(Pet.previewPets) { pet in
                     Button {
                         
                     } label: {
