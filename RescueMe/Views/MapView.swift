@@ -29,22 +29,7 @@ struct MapView: View {
             MapScaleView()
         }
         .safeAreaInset(edge: .bottom) {
-            VStack {
-                Group {
-                    if slicerDistance > 0.4 {
-                        Text("\(slicerDistance.description) km")
-                    } else {
-                        Text("No distance Filter")
-                    }
-                }
-                .foregroundStyle(.gray)
-                Slider(value: $slicerDistance, in: 0...15, step: 0.5)
-                    .padding(10)
-                    .background(Capsule().fill(Color.white))
-                    .tint(.primaryOrange)
-                    .padding(.horizontal)
-                    .padding(.bottom, 20)
-            }
+            distanceSlider
         }
         .onAppear {
             manager.startLocationServices()
@@ -52,17 +37,58 @@ struct MapView: View {
                 cameraPosition = .region(MKCoordinateRegion(center: user, span: MKCoordinateSpan(latitudeDelta: 3.0, longitudeDelta: 3.0)))
             }
         }
-        .onChange(of: slicerDistance, { _, _ in
+        .onChange(of: slicerDistance) { _, _ in
             sheltersInCircle = getSheltersInCircle()
-        })
+            if let user = manager.userLocation?.coordinate {
+                let span = MKCoordinateSpan(latitudeDelta: slicerDistance / 40, longitudeDelta: slicerDistance / 40)
+                withAnimation {
+                    if slicerDistance > 0.5 {
+                        cameraPosition = .region(MKCoordinateRegion(center: user, span: span))
+                    } else {
+                        cameraPosition = .userLocation(fallback: .automatic)
+                    }
+                }
+            }
+        }
         .onChange(of: manager.userLocation) { _, _ in
             sheltersInCircle = getSheltersInCircle()
         }
+        .overlay(alignment: .top, content: {
+            if slicerDistance != 0 {
+                Text("Shelters near you (\(sheltersInCircle.count))")
+                    .font(.footnote)
+                    .padding()
+                    .background(.thinMaterial)
+                    .clipShape(Capsule())
+            }
+        })
         .sheet(item: $selectedPlaceMark) { shelter in
             ShelterDetailView(shelter: shelter)
+                .presentationDetents([.medium,.large])
         }
     }
     
+    private var distanceSlider: some View {
+        HStack {
+            Slider(value: $slicerDistance, in: 0...15, step: 0.5)
+                .padding(10)
+                .background(Capsule().fill(.thinMaterial))
+                .tint(.primaryOrange)
+            Group {
+                if slicerDistance > 0.4 {
+                    Text("\(slicerDistance.description) km")
+                } else {
+                    Text("N/A")
+                }
+            }
+            .frame(minWidth: 60)
+            .padding(15)
+            .background(Capsule().fill(.thinMaterial))
+        }
+        .padding(.horizontal)
+        .padding(.bottom, 20)
+        .shadow(radius: 10)
+    }
     private func radio() -> CLLocationDistance {
         slicerDistance * 1000
     }
