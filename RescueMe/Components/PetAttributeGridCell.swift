@@ -34,7 +34,7 @@ struct PetAttributeGridCell: View {
         .frame(minWidth: 70, maxWidth: 170)
         .background {
             RoundedRectangle(cornerRadius: 4)
-                .fill(title.attributeColor.opacity(0.15))
+                .fill(.ultraThinMaterial)
         }
     }
 }
