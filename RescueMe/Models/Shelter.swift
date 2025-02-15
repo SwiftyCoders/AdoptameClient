@@ -1,4 +1,5 @@
 import Foundation
+import MapKit
 
 struct Shelter: Identifiable, Hashable {
     let id: UUID
@@ -20,4 +21,8 @@ struct Shelter: Identifiable, Hashable {
     var formattedWebsite: String {
         website ?? "No website provided"
     }
+    
+    var coordinate: CLLocationCoordinate2D {
+            CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        }
 }
