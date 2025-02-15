@@ -50,13 +50,18 @@ struct ImageCarousel<ImageType: Identifiable & Hashable>: View {
     
     private func startAutoScroll() {
         timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
-            withAnimation {
-                currentIndex = (currentIndex + 1) % images.count
-            }
+            Task { await incrementIndex() }
         }
     }
     
-    func stopAutoScroll() {
+    @MainActor
+    private func incrementIndex() async {
+        withAnimation {
+            currentIndex = (currentIndex + 1) % images.count
+        }
+    }
+    
+    private func stopAutoScroll() {
         timer = nil
         timer?.invalidate()
     }

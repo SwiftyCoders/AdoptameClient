@@ -1,8 +1,8 @@
 import SwiftUI
 import MapKit
 
-@Observable
-final class LocationSearchManager: NSObject {
+@Observable @preconcurrency
+final class LocationSearchManager: NSObject, MKLocalSearchCompleterDelegate {
     var query: String = "" {
         didSet {
             Task {
@@ -81,7 +81,7 @@ final class LocationSearchManager: NSObject {
     }
 }
 
-extension LocationSearchManager: MKLocalSearchCompleterDelegate {
+extension LocationSearchManager {
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
         Task {
             results = await withTaskGroup(of: LocationResult?.self) { group in

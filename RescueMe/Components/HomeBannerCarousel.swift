@@ -47,9 +47,14 @@ struct HomeBannerCarousel: View {
     
     private func autoScroll() {
         Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
-            withAnimation(.easeInOut) {
-                currentIndex = (currentIndex + 1) % banners.count
-            }
+            Task { await incrementIndex() }
+        }
+    }
+    
+    @MainActor
+    func incrementIndex() async {
+        withAnimation(.easeInOut) {
+            currentIndex = (currentIndex + 1) % banners.count
         }
     }
     
