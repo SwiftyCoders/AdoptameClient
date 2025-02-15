@@ -23,5 +23,19 @@ struct HeartButton: View {
 }
 
 #Preview {
-    HeartButton(action: {})
+    VStack {
+        HeartButton(action: {})
+        HStack {
+            Image(.customHome)
+            Image(.customLocation)
+            Image(.customLocationFill)
+            Image(.customHousePet)
+            Image(.customHousePetFill)
+            Image(.customPetHeart)
+            Image(.customPetHeartFill)
+        }
+        .font(.largeTitle)
+        
+    }
+    
 }
