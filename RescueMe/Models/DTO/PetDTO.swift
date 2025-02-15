@@ -1,15 +1,18 @@
 import Foundation
+import MapKit
 
 struct PetDTO: Codable {
     let id: UUID
     let name: String
-    let age: Int?
-    let description: String?
+    let age: PetAge
+    let about: String?
+    let personality: String?
+    let idealHome: String?
+    let medicalCondition: String?
+    let adoptionInfo: String?
     let breed: String
-    let weight: Double?
+    let shelter: ShelterDTO
     let images: [String]?
-    let latitude: Double
-    let longitude: Double
     
     let size: PetSize
     let adoptionStatus: AdoptionStatus
@@ -19,12 +22,14 @@ struct PetDTO: Codable {
         Pet(id: id,
             name: name,
             age: age,
-            description: description,
+            about: about,
+            personality: personality,
+            idealHome: idealHome,
+            medicalCondition: medicalCondition,
+            adoptionInfo: adoptionInfo,
             breed: breed,
-            weight: weight,
+            shelter: shelter.mapToModel,
             images: images,
-            latitude: latitude,
-            longitude: longitude,
             size: size,
             adoptionStatus: adoptionStatus,
             species: species)

@@ -7,9 +7,10 @@ protocol ShelterRepositoryProtocol {
     func addNewShelter(shelter: ShelterDTO) async throws
     func deleteShelter(id: UUID) async throws
     func updateShelter(id: UUID, shelter: ShelterDTO) async throws
+    func getShelterByLocation(latitude: Double, longitude: Double) async throws -> [Shelter]
 }
 
-struct ShelterRepositoryProtocolRepository: NetworkRepositoryProtocol, ShelterRepositoryProtocol {
+struct ShelterRepository: NetworkRepositoryProtocol, ShelterRepositoryProtocol {
     var session: URLSession = .shared
     
     func getAllShelters() async throws -> [Shelter] {
@@ -30,5 +31,9 @@ struct ShelterRepositoryProtocolRepository: NetworkRepositoryProtocol, ShelterRe
     
     func updateShelter(id: UUID, shelter: ShelterDTO) async throws {
         try await postJSON(urlReq: .APIRequest(url: APIEndpoint.replaceShelter(id: id), httpMethod: .put, body: shelter), statusCode: 200)
+    }
+    
+    func getShelterByLocation(latitude: Double, longitude: Double) async throws -> [Shelter] {
+        []
     }
 }

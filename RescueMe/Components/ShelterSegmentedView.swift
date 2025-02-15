@@ -8,12 +8,12 @@ struct ShelterSegmentedView: View {
     var body: some View {
         VStack {
             Picker("Select View or Details", selection: $selection) {
-                Text("Pets: \(shelter.pets.count)")
+                Text("Pets (\(Pet.previewPets.count))")
                     .tag(0)
-                    .accessibilityLabel("Pets available: \(shelter.pets.count)")
-                Text("Adoption Policy")
+                    .accessibilityLabel("Pets available: \(Pet.previewPets.count)")
+                Text("Shelter Info")
                     .tag(1)
-                    .accessibilityLabel("Adoption Policy Information")
+                    .accessibilityLabel("Shelter Information")
             }
             .pickerStyle(.segmented)
             .safeAreaPadding(.horizontal)
