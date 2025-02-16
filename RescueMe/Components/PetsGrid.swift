@@ -9,9 +9,9 @@ struct PetsGrid: View {
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(shelter.pets) { pet in
                     Button {
-                        
+                        print("navigate to detail")
                     } label: {
-                        PetCard(petModel: pet)
+                        PetCard(petModel: pet, heartButtonAction: {})
                     }
                     .foregroundStyle(.primary)
                 }
