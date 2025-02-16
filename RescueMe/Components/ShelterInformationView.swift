@@ -12,8 +12,8 @@ struct ShelterInformationView: View {
                     .bold()
                 
                 shelterInfoRow("mappin.and.ellipse", text: shelter.formattedAddress)
-                shelterInfoRow("phone.badge.waveform.fill", text: shelter.formattedPhone)
-                shelterInfoRow("envelope.fill", text: shelter.contactEmail)
+                shelterInfoRow("phone.badge.waveform.fill", text: shelter.phone)
+                shelterInfoRow("envelope.fill", text: shelter.email ?? "")
                 shelterInfoRow("globe", text: shelter.formattedWebsite)
             }
         }

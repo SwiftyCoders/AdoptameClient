@@ -10,16 +10,16 @@ struct ShelterContactView: View {
                 makeCall(phoneNumber: shelter.phone)
             }
             .accessibilityLabel("Call shelter")
-            .accessibilityHint(disabledPhoneButton ? "Phone number not available" : "Double tap to call \(shelter.phone ?? "")")
+            .accessibilityHint(disabledPhoneButton ? "Phone number not available" : "Double tap to call \(shelter.phone)")
             
             contactButton(systemImageName: "envelope.fill", buttonLabel: "Email", backgroundColor: .primaryOrange, isDisabled: disabledEmailButton) {
-                sendEmail(email: shelter.contactEmail)
+                sendEmail(email: shelter.email)
             }
             .accessibilityLabel("Email shelter")
-            .accessibilityHint(disabledEmailButton ? "Email not available" : "Double tap to send email to \(shelter.contactEmail)")
+            .accessibilityHint(disabledEmailButton ? "Email not available" : "Double tap to send email to \(shelter.email ?? "")")
             
             contactButton(systemImageName: "globe", buttonLabel: "Website", backgroundColor: .primaryOrange, isDisabled: disabledWebSiteButton) {
-                openWebSite(webSite: shelter.contactEmail)
+                openWebSite(webSite: shelter.email)
             }
             .accessibilityLabel("Website shelter")
             .accessibilityHint(disabledWebSiteButton ? "Website not available" : "Double tap to open website")
@@ -60,19 +60,18 @@ struct ShelterContactView: View {
     }
 
     var disabledPhoneButton: Bool {
-        guard let phone = shelter.phone else { return true }
-        if phone.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { return true }
+        if shelter.phone.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { return true }
         return false
     }
     
     var disabledEmailButton: Bool {
-        let email = shelter.contactEmail
+        guard let email = shelter.email else { return true }
         if email.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { return true }
         return false
     }
     
     var disabledWebSiteButton: Bool {
-        let website = shelter.contactEmail
+        guard let website = shelter.email else { return true }
         if website.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty { return true }
         return false
     }

@@ -28,7 +28,7 @@ struct PetCard: View {
                         .foregroundColor(.primaryOrange)
                     
                     Group {
-                        Text(String(format: "%.1f km", petModel.latitude))
+                        Text(String(format: "%.1f km", petModel.shelter.latitude))
                         Text("•")
                         Text(petModel.breed)
                             .lineLimit(1)

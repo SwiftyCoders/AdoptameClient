@@ -46,7 +46,6 @@ struct ImageCarousel<ImageType: Identifiable & Hashable>: View {
                 stopAutoScroll()
             }
         }
-        Spacer()
     }
     
     private func startAutoScroll() {
