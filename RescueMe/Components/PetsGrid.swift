@@ -11,7 +11,7 @@ struct PetsGrid: View {
                     Button {
                         
                     } label: {
-                        PetCard(petModel: pet)
+                        PetCard(petModel: pet, heartButtonAction: {})
                     }
                     .foregroundStyle(.primary)
                 }
