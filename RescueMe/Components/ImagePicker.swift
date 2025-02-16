@@ -3,7 +3,7 @@ import PhotosUI
 
 struct ImagePicker: View {
     @State private var selectedItem: PhotosPickerItem? = nil
-    @State private var selectedImageData: Data? = nil
+    @Binding var selectedImageData: Data?
     
     var size: Double = 220
     
@@ -53,5 +53,5 @@ struct ImagePicker: View {
 }
 
 #Preview {
-    ImagePicker()
+    ImagePicker(selectedImageData: .constant(Data()))
 }

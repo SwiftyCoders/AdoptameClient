@@ -13,7 +13,7 @@ protocol GetShelterByIDUseCaseProtocol {
 }
 
 protocol AddNewShelterUseCaseProtocol {
-    func exectue(shelter: ShelterDTO) async throws
+    func exectue(shelter: PostShelterDTO) async throws
 }
 
 protocol DeleteShelterUseCaseProtocol {
