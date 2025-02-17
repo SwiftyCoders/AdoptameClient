@@ -16,31 +16,20 @@ struct HomeView: View {
                     HomeBannerCarousel()
                     
                     HStack(spacing: 20) {
-                        PetSelectableCell(emoji: "🐕", petCategory: "Dog", isSelected: true, gridType: .circle) {
-                            
-                        }
-                        PetSelectableCell(emoji: "🐈", petCategory: "Cat", isSelected: false, gridType: .circle) {
-                            
-                        }
-                        PetSelectableCell(emoji: "🐾", petCategory: "Other", isSelected: false, gridType: .circle) {
-                            
-                        }
+                        PetButtonCell(emoji: "🐕", petCategory: "Dog", gridType: .circle) {}
+                        PetButtonCell(emoji: "🐈", petCategory: "Cat", gridType: .circle) {}
+                        PetButtonCell(emoji: "🐾", petCategory: "Other", gridType: .circle) {}
                     }
                     
                     ScrollHorizontalComponent(title: "Pets Near You", buttonTitle: "View All", items: Pet.previewPets, componentHeight: 160, componentWidth: 200) { pet in
                         PetCard(petModel: pet, heartButtonAction: {})
-                    } navigationAction: {
-                    
-                    }
+                    } navigationAction: {}
                     
                     ScrollHorizontalComponent(title: "Shelters Near You", buttonTitle: "View All", items: Pet.previewPets, componentHeight: 160, componentWidth: 200) { pet in
                         PetCard(petModel: pet, heartButtonAction: {})
-                    } navigationAction: {
-                    
-                    }
+                    } navigationAction: {}
                 }
             }
-
             .toolbar {
                 ToolbarItem(placement: .principal, content: {
                     AppNavigationBar(logoApp: .logoAdoptifurro, imageUser: Image("person.circle.fill"), tapToNavigation: {
@@ -49,13 +38,13 @@ struct HomeView: View {
                 })
             }
             .fullScreenCover(isPresented: $showUserProfile) {
+                // MARK: TODO: Create UserProfileView
                 Text("User Profile")
                 Button {
                     showUserProfile.toggle()
                 } label: {
                     Text("Close Profile")
                 }
-
             }
         }
     }

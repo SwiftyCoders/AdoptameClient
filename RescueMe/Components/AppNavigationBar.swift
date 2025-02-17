@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct AppNavigationBar: View {
-    
     let logoApp: ImageResource
     let imageUser: Image
     let tapToNavigation: () -> Void
