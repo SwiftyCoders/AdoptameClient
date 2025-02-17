@@ -3,22 +3,43 @@ import SwiftUI
 @Observable
 final class ShelterFormViewModel {
     private let addNewShelter = AddNewShelterUseCase()
-    var name: String = ""
-    var address: String = ""
-    var description: String = ""
-    var email: String = ""
-    var website: String = ""
+    
+    var name: String = "" {
+        didSet { validateAllFields() }
+    }
+
+    var address: String = "" {
+        didSet { validateAllFields() }
+    }
+
+    var description: String = "" {
+        didSet { validateAllFields() }
+    }
+
+    var email: String = "" {
+        didSet { validateAllFields() }
+    }
+
+    var website: String = "" {
+        didSet { validateAllFields() }
+    }
+
     var latitude: Double = 0.0
     var longitude: Double = 0.0
-    var adoptionPolicy = ""
-    var phone = ""
+    var adoptionPolicy = "" {
+        didSet { validateAllFields() }
+    }
+
+    var phone = "" {
+        didSet { validateAllFields() }
+    }
+
     var image: Data?
     var showLocationSearchView = false
+    var isFormValid: Bool = false
     
     
-    func registerNewShelter() {
-        //guard validateForm() else { return }
-        
+    func registerNewShelter() {        
         let newShelter = PostShelterDTO(name: name, description: description, adoptionPolicy: adoptionPolicy, phone: phone, contactEmail: email, website: website, address: address, latitude: latitude, longitude: longitude, image: image)
         
         Task {
@@ -61,7 +82,7 @@ final class ShelterFormViewModel {
     
     func validateDescription(_ description: String) -> LocalizedStringResource? {
         if description.count > 500 {
-            return "Description should not exceed 500 characters."
+            return "Description should not exceed 200 characters."
         }
         return nil
     }
@@ -98,9 +119,10 @@ final class ShelterFormViewModel {
     }
     
     func validateForm() -> Bool {
-        if validateName(name) != nil, validateAddress(address) != nil, validatePhone(phone) != nil {
-            return true
-        }
-        return false
+        return validateName(name) == nil && validateAddress(address) == nil && validatePhone(phone) == nil
+    }
+    
+    func validateAllFields() {
+        isFormValid = validateForm()
     }
 }

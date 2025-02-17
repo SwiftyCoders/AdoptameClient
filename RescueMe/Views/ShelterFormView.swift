@@ -92,6 +92,8 @@ struct ShelterFormView: View {
                     .buttonPrimaryStyle()
                     .accessibilityLabel("Confirm button")
                     .accessibilityHint("Press to complete the shelter registration.")
+                    .disabled(!vm.isFormValid)
+                    .opacity(!vm.isFormValid ? 0.5 : 1)
                 }
             }
             .onAppear {
