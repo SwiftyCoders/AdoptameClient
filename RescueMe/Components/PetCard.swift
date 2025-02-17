@@ -2,6 +2,7 @@ import SwiftUI
 
 struct PetCard: View {
     var petModel: Pet
+    let heartButtonAction: () -> Void
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -11,7 +12,7 @@ struct PetCard: View {
                 .clipShape(RoundedRectangle(cornerRadius: 4))
                 .overlay(alignment: .topTrailing) {
                     HeartButton {
-                        
+                        heartButtonAction()
                     }
                     .padding(10)
                 }
@@ -45,7 +46,7 @@ struct PetCard: View {
     ScrollView {
         LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 16), count: 2), spacing: 16) {
             ForEach(0..<9, id: \.self) { _ in
-                PetCard(petModel: .previewPet)
+                PetCard(petModel: .previewPet, heartButtonAction: {})
             }
         }
         .safeAreaPadding()
@@ -53,6 +54,6 @@ struct PetCard: View {
 }
 
 #Preview {
-    PetCard(petModel: .previewPet)
+    PetCard(petModel: .previewPet, heartButtonAction: {})
         .safeAreaPadding(.horizontal)
 }
