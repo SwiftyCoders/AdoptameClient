@@ -45,7 +45,7 @@ struct PetCard: View {
 #Preview {
     ScrollView {
         LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 16), count: 2), spacing: 16) {
-            ForEach(0..<9, id: \.self) { _ in
+            ForEach(Pet.previewPets) { pet in
                 PetCard(petModel: .previewPet, heartButtonAction: {})
             }
         }

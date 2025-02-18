@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct PetSelectableCell: View {
+struct PetButtonCell: View {
     
     enum PetsGridType {
         case rectangle
@@ -9,7 +9,6 @@ struct PetSelectableCell: View {
     
     let emoji: String
     let petCategory: String
-    let isSelected: Bool
     let gridType: PetsGridType
     let onTapAction: () -> Void
     
@@ -31,16 +30,13 @@ struct PetSelectableCell: View {
                     .frame(width: 110, height: 120)
                     .overlay(
                         RoundedRectangle(cornerRadius: 4)
-                            .stroke(
-                                isSelected ? Color.primaryOrange : Color.gray.opacity(0.5),
-                                lineWidth: isSelected ? 2 : 1
-                            )
+                            .stroke( Color.gray.opacity(0.5),
+                                     lineWidth: 1
+                                   )
                     )
                 }
                 .accessibilityLabel("\(petCategory) emoji")
                 .accessibilityHint("Tap to select \(petCategory)")
-                .accessibilityValue(isSelected ? "Selected" : "Not Selected")
-                .accessibilityAddTraits(isSelected ? .isSelected : [])
                 
             case .circle:
                 VStack(spacing: 8) {
@@ -49,18 +45,15 @@ struct PetSelectableCell: View {
                     } label: {
                         Text(emoji)
                             .font(.system(size: 40))
-                        
                             .frame(width: 100, height: 100)
                             .overlay(
                                 Circle()
                                     .stroke(
-                                        isSelected ? Color.primaryOrange : Color.gray.opacity(0.5), lineWidth: isSelected ? 2 : 1)
+                                        Color.gray.opacity(0.5), lineWidth : 1)
                             )
                     }
                     .accessibilityLabel("\(petCategory) emoji")
                     .accessibilityHint("Tap to select \(petCategory)")
-                    .accessibilityValue(isSelected ? "Selected" : "Not Selected")
-                    .accessibilityAddTraits(isSelected ? .isSelected : [])
                     
                     Text(petCategory)
                         .font(.subheadline)
@@ -76,16 +69,15 @@ struct PetSelectableCell: View {
 #Preview {
     VStack(spacing: 32) {
         HStack(spacing: 16) {
-            PetSelectableCell(emoji: "🐈", petCategory: "Cats", isSelected: false, gridType: .rectangle, onTapAction: {})
-            PetSelectableCell(emoji: "🐕", petCategory: "Dogs", isSelected: true, gridType: .rectangle, onTapAction: {})
-            PetSelectableCell(emoji: "🦅", petCategory: "Birds", isSelected: false, gridType: .rectangle, onTapAction: {})
-            
+            PetButtonCell(emoji: "🐈", petCategory: "Cats", gridType: .rectangle, onTapAction: {})
+            PetButtonCell(emoji: "🐕", petCategory: "Dogs", gridType: .rectangle, onTapAction: {})
+            PetButtonCell(emoji: "🦅", petCategory: "Birds", gridType: .rectangle, onTapAction: {})
         }
         
         HStack(spacing: 16) {
-            PetSelectableCell(emoji: "🐈", petCategory: "Cats", isSelected: true, gridType: .circle, onTapAction: {})
-            PetSelectableCell(emoji: "🐕", petCategory: "Dogs", isSelected: false, gridType: .circle, onTapAction: {})
-            PetSelectableCell(emoji: "🦅", petCategory: "Birds", isSelected: false, gridType: .circle, onTapAction: {})
+            PetButtonCell(emoji: "🐈", petCategory: "Cats", gridType: .circle, onTapAction: {})
+            PetButtonCell(emoji: "🐕", petCategory: "Dogs", gridType: .circle, onTapAction: {})
+            PetButtonCell(emoji: "🦅", petCategory: "Birds", gridType: .circle, onTapAction: {})
         }
     }
 }
