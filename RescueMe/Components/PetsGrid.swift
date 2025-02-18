@@ -8,9 +8,7 @@ struct PetsGrid: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(Pet.previewPets) { pet in
-                    Button {
-                        print("navigate to detail")
-                    } label: {
+                    Button {} label: {
                         PetCard(petModel: pet, heartButtonAction: {})
                     }
                     .foregroundStyle(.primary)
