@@ -27,7 +27,7 @@ struct GenericGrid<T: Identifiable, CONTENT: View> : View {
 
 #Preview {
     GenericGrid(horizontalSpacing: 16, verticalSpacing: 16, numberOfColumns: 2, contentItems: Pet.previewPets) { pet in
-        PetCard(petModel: pet)
+        PetCard(petModel: pet) {}
     } onItemTap: {
         
     }
