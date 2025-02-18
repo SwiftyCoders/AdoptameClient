@@ -13,6 +13,8 @@ struct PetSearchView: View {
     @State private var selectedAges: Set<String> = []
     
     @State private var selectedAddress = ""
+    @State private var longitude = 0.0
+    @State private var latitude = 0.0
     @State var coordinates: (lat: Double, lon: Double) = (0, 0)
     @State private var showLocationSearchView = false
     
@@ -35,9 +37,12 @@ struct PetSearchView: View {
             }
             .padding()
         }
+        .onAppear {
+            UIScrollView.appearance().delaysContentTouches = false
+        }
         .navigationTitle("Pet Search")
         .sheet(isPresented: $showLocationSearchView) {
-            LocationSearchView(selectedAddress: $selectedAddress)
+            LocationSearchView(selectedAddress: $selectedAddress, latitude: $latitude, longitude: $longitude)
         }
     }
     

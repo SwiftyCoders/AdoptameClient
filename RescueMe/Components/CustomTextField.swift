@@ -63,7 +63,7 @@ struct CustomTextField: View {
     
     private func validateField(_ value: String) {
         if let message = validate(value) {
-            errorMsg = "\(label) \(String(localized: message))"
+            errorMsg = "\(String(localized: message))"
             errorText = true
         } else {
             errorMsg = ""

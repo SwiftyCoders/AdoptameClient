@@ -43,7 +43,7 @@ final class AddNewShelterUseCase: AddNewShelterUseCaseProtocol {
         self.shelterRepository = shelterRepository
     }
     
-    func exectue(shelter: ShelterDTO) async throws {
+    func exectue(shelter: PostShelterDTO) async throws {
         try await shelterRepository.addNewShelter(shelter: shelter)
     }
 }

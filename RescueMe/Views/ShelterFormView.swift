@@ -5,28 +5,32 @@ enum ShelterField {
     case name
     case address
     case description
+    case adoptionPolicy
+    case phone
     case email
     case web
     
     var hasPrevious: Bool {
         switch self {
         case .name: return false
-        case .description, .address, .email, .web: return true
+        case .description, .address, .adoptionPolicy, .phone, .email, .web: return true
         }
     }
     
     var hasNext: Bool {
         switch self {
         case .web: return false
-        case .address, .description, .email, .name: return true
+        case .address, .description, .adoptionPolicy, .phone, .email, .name: return true
         }
     }
     
     mutating func moveToNext() {
         switch self {
         case .name: self = .address
-        case .address: self = .description
-        case .description: self = .email
+        case .address: self = .phone
+        case .phone: self = .description
+        case .description: self = .adoptionPolicy
+        case .adoptionPolicy: self = .email
         case .email: self = .web
         case .web: break
         }
@@ -39,17 +43,14 @@ enum ShelterField {
         case .email: self = .description
         case .description: self = .address
         case .address: self = .name
+        case .adoptionPolicy: self = .description
+        case .phone:self = .adoptionPolicy
         }
     }
 }
 
 struct ShelterFormView: View {
-    @State var name: String = ""
-    @State var address: String = ""
-    @State var description: String = ""
-    @State var email: String = ""
-    @State var website: String = ""
-    @State var showLocationSearchView = false
+    @State private var vm = ShelterFormViewModel()
     @FocusState var focus: ShelterField?
     
     var body: some View {
@@ -68,9 +69,14 @@ struct ShelterFormView: View {
                             .foregroundStyle(.secondary)
                             .multilineTextAlignment(.center)
                             .accessibilityHint("This form allows you to register a shelter.")
+                        
+                        Text("Fields marked with * are required.")
+                            .font(.footnote)
+                            .italic()
+                            .foregroundStyle(.secondary)
                     }
                     
-                    ImagePicker(size: 180)
+                    ImagePicker(selectedImageData: $vm.image, size: 180)
                         .padding()
                         .accessibilityLabel("Shelter image")
                         .accessibilityHint("Select an image to represent your shelter.")
@@ -79,28 +85,33 @@ struct ShelterFormView: View {
                         .accessibilitySortPriority(1)
                     
                     Button {
-                        
+                        vm.registerNewShelter()
                     } label: {
                         Text("Confirm")
                     }
                     .buttonPrimaryStyle()
                     .accessibilityLabel("Confirm button")
                     .accessibilityHint("Press to complete the shelter registration.")
+                    .disabled(!vm.isFormValid)
+                    .opacity(!vm.isFormValid ? 0.5 : 1)
                 }
+            }
+            .onAppear {
+                UIScrollView.appearance().delaysContentTouches = false
             }
             .onChange(of: focus, { oldValue, newValue in
                 if newValue == .address {
-                    focus = .description
+                    focus = .phone
                 }
                 
                 if oldValue == .address {
-                    showLocationSearchView = true
+                    vm.showLocationSearchView = true
                 }
             })
-            .sheet(isPresented: $showLocationSearchView) {
-                focus = .description
+            .sheet(isPresented: $vm.showLocationSearchView) {
+                focus = .phone
             } content: {
-                LocationSearchView(selectedAddress: $address)
+                LocationSearchView(selectedAddress: $vm.address, latitude: $vm.latitude, longitude: $vm.longitude)
                     .accessibilityLabel("Address search")
                     .accessibilityHint("Enter a shelter address.")
             }
@@ -111,32 +122,55 @@ struct ShelterFormView: View {
     
     var shelterForm: some View {
         Form {
-            CustomTextField(input: $name, label: "Name", prompt: "Name", systemName: "person", isFocused: focus == .name) { name in
-                validateName(name: name)
+            CustomTextField(input: $vm.name, label: "Shelter Name *", prompt: "Name", systemName: "person", isFocused: focus == .name) { name in
+                vm.validateName(vm.name)
             }
             .focused($focus, equals: .name)
             .onSubmit { focus?.moveToNext() }
             .accessibilityLabel("Name field")
             .accessibilityHint("Enter the name of the shelter.")
 
-            CustomTextField(input: $address, label: "Address", prompt: "Address", systemName: "location", isFocused: focus == .address) { _ in
-                nil
+            CustomTextField(input: $vm.address, label: "Address *", prompt: "Address", systemName: "location", isFocused: focus == .address) { _ in
+                vm.validateAddress(vm.address)
             }
             .focused($focus, equals: .address)
             .onSubmit { focus?.moveToNext() }
             .accessibilityLabel("Address field")
             .accessibilityHint("Enter the shelter's address.")
             
-            CustomTextField(input: $description, label: "Description", prompt: "Description", systemName: "person", isFocused: focus == .description) { name in
-                nil
+            
+            CustomTextField(input: $vm.phone, label: "Phone *", prompt: "Phone", systemName: "iphone", isFocused: focus == .phone) { _ in
+                vm.validatePhone(vm.phone)
+            }
+            .keyboardType(.phonePad)
+            .textContentType(.telephoneNumber)
+            .focused($focus, equals: .phone)
+            .onSubmit { focus?.moveToNext() }
+            .accessibilityLabel("Phone field")
+            .accessibilityHint("Enter the shelter's phone.")
+            
+            CustomTextField(input: $vm.description, label: "Description", prompt: "Description", systemName: "person", isFocused: focus == .description) { name in
+                vm.validateDescription(vm.description)
             }
             .focused($focus, equals: .description)
             .onSubmit { focus?.moveToNext() }
             .accessibilityLabel("Description field")
             .accessibilityHint("Describe the shelter and its mission.")
             
-            CustomTextField(input: $email, label: "Email", prompt: "Email", systemName: "envelope", isFocused: true) { name in
-                nil
+            Text("Adoption Policy")
+                .font(.headline)
+            TextEditor(text: $vm.adoptionPolicy)
+                .frame(height: 100)
+                .padding(4)
+                .background(RoundedRectangle(cornerRadius: 8).stroke())
+                .focused($focus, equals: .adoptionPolicy)
+                .onSubmit { focus?.moveToNext() }
+                .accessibilityLabel("Adoption policies field")
+                .accessibilityHint("Describe the shelter adoption policies.")
+                .padding(.bottom)
+            
+            CustomTextField(input: $vm.email, label: "Email", prompt: "Email", systemName: "envelope", isFocused: true) { name in
+                vm.validateEmail(vm.email)
             }
             .focused($focus, equals: .email)
             .keyboardType(.emailAddress)
@@ -144,8 +178,8 @@ struct ShelterFormView: View {
             .accessibilityLabel("Email field")
             .accessibilityHint("Enter the shelter's contact email.")
 
-            CustomTextField(input: $website, label: "Website", prompt: "Website", systemName: "network", isFocused: true) { name in
-                nil
+            CustomTextField(input: $vm.website, label: "Website", prompt: "Website", systemName: "network", isFocused: true) { name in
+                vm.validateWebsite(vm.website)
             }
             .focused($focus, equals: .web)
             .keyboardType(.webSearch)
@@ -156,13 +190,6 @@ struct ShelterFormView: View {
             .accessibilityLabel("Website field")
             .accessibilityHint("Enter the shelter's website.")
         }
-    }
-    
-    func validateName(name: String) -> LocalizedStringResource? {
-        if name.isEmpty {
-            return "The name cannot be empty"
-        }
-        return nil
     }
 }
 

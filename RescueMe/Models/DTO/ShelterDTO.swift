@@ -6,7 +6,7 @@ struct ShelterDTO: Codable {
     let description: String?
     let adoptionPolicy: String?
     let phone: String
-    let email: String?
+    let contactEmail: String?
     let website: String?
     let address: String?
     let latitude: Double
@@ -20,7 +20,7 @@ struct ShelterDTO: Codable {
             description: description,
             adoptionPolicy: adoptionPolicy,
             phone: phone,
-            email: email,
+            email: contactEmail,
             website: website,
             address: address,
             latitude: latitude,

@@ -4,7 +4,7 @@ import SCNetwork
 protocol ShelterRepositoryProtocol {
     func getAllShelters() async throws -> [Shelter]
     func shelterByID(id: UUID) async throws -> Shelter
-    func addNewShelter(shelter: ShelterDTO) async throws
+    func addNewShelter(shelter: PostShelterDTO) async throws
     func deleteShelter(id: UUID) async throws
     func updateShelter(id: UUID, shelter: ShelterDTO) async throws
     func getShelterByLocation(latitude: Double, longitude: Double) async throws -> [Shelter]
@@ -21,7 +21,7 @@ struct ShelterRepository: NetworkRepositoryProtocol, ShelterRepositoryProtocol {
         try await getJSON(urlReq: .APIRequest(url: APIEndpoint.getShelter(id: id)), model: ShelterDTO.self).mapToModel
     }
     
-    func addNewShelter(shelter: ShelterDTO) async throws {
+    func addNewShelter(shelter: PostShelterDTO) async throws {
         try await postJSON(urlReq: .APIRequest(url: APIEndpoint.createShelter(), httpMethod: .post, body: shelter), statusCode: 201)
     }
     

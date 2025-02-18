@@ -3,6 +3,8 @@ import SwiftUI
 struct LocationSearchView: View {
     @State var locationVM = LocationSearchManager()
     @Binding var selectedAddress: String
+    @Binding var latitude: Double
+    @Binding var longitude: Double
     @Environment(\.dismiss) var dismiss
     @FocusState var focus: ShelterField?
     
@@ -17,6 +19,8 @@ struct LocationSearchView: View {
                         }
                         .onTapGesture {
                             selectedAddress = "\(result.title) \(result.subtitle)"
+                            latitude = result.latitude
+                            longitude = result.longitude
                             locationVM.coordinates = (lat: result.latitude, lon: result.longitude)
                             dismiss()
                         }
@@ -40,5 +44,5 @@ struct LocationSearchView: View {
 }
 
 #Preview {
-    LocationSearchView(selectedAddress: .constant("Barcelona"))
+    LocationSearchView(selectedAddress: .constant("Barcelona"), latitude: .constant(2.2), longitude: .constant(2.2))
 }
