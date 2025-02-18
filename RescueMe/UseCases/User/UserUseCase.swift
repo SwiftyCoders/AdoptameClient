@@ -7,8 +7,20 @@ final class NewUserUseCase: NewUserUseCaseProtocol {
         self.userRepository = userRepository
     }
     
-    func execute(user: UserDTO) async throws {
+    func execute(user: UserPostDTO) async throws {
         try await userRepository.newUser(user: user)
+    }
+}
+
+final class LoginUseCase: LoginUseCaseProtocol {
+    let repository: UserRepositoryProtocol
+    
+    init(repository: UserRepositoryProtocol = UserRepository()) {
+        self.repository = repository
+    }
+    
+    func execute(user: UserPostDTO) async throws {
+        try await repository.loginUser(user: user)
     }
 }
 

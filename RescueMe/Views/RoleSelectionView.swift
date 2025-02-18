@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct RoleSelectionView: View {
-    
+    @Environment(NavigationManager.self) var navManager
+    @Environment(LoginViewModel.self) var loginVM
     @State var selectedRole: UserRole = .adopter
-    var lineSpacing: CGFloat = 10
     
     var body: some View {
         VStack(spacing: 24) {
-            introDescription(title: "Tell us about yourself", description: "Are you a Pet Shelter or Organization looking to find loving homes for animals? Or a Pet Adopter searching for your new best friend?", lineSpacing: lineSpacing)
+            introDescription(title: "Tell us about yourself", description: "Are you a Pet Shelter or Organization looking to find loving homes for animals? Or a Pet Adopter searching for your new best friend?", lineSpacing: 10)
                 .accessibilityElement(children: .combine)
             
             roleButton(title: "Pet Owner or Shelter", isSelected: selectedRole == .shelter) {
@@ -27,7 +27,14 @@ struct RoleSelectionView: View {
             Spacer()
             
             Divider()
-            Button {  } label: {
+            Button {
+                switch selectedRole {
+                case .adopter:
+                    loginVM.isUserLogged = true
+                case .shelter:
+                    navManager.navigate(to: .shelterForm)
+                }
+            } label: {
                 Text("Continue")
             }
             .buttonPrimaryStyle()
@@ -72,4 +79,6 @@ struct RoleSelectionView: View {
 
 #Preview {
     RoleSelectionView()
+        .environment(LoginViewModel())
+        .environment(NavigationManager())
 }

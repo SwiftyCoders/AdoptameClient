@@ -1,7 +1,11 @@
 import Foundation
 
 protocol NewUserUseCaseProtocol {
-    func execute(user: UserDTO) async throws
+    func execute(user: UserPostDTO) async throws
+}
+
+protocol LoginUseCaseProtocol {
+    func execute(user: UserPostDTO) async throws
 }
 
 protocol UpdateUserUseCaseProtocol {

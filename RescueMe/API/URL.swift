@@ -1,7 +1,7 @@
 import Foundation
 
 enum APIEndpoint {
-    static let baseURL = URL(string: "https://f8cf-79-154-216-32.ngrok-free.app")!
+    static let baseURL = URL(string: "http://127.0.0.1:8080")!
 
     // MARK: - Pets
     static let getAllPets = baseURL.appending(path: "pets")
@@ -41,4 +41,9 @@ enum APIEndpoint {
     static func petsFromShelter(id: UUID) -> URL {
         baseURL.appending(path: "shelters/\(id)/pets")
     }
+    
+    // MARK: - Users
+    static let newUser: URL = baseURL.appending(path: "auth/create")
+    
+    static let loginUser = baseURL.appending(path: "auth/login")
 }

@@ -4,7 +4,10 @@ import SwiftUI
 final class NavigationManager {
     //MARK: LOGIN
     enum LoginDestinationViews: Hashable {
-        case viewOne
+        case register
+        case login
+        case roleSelection
+        case shelterForm
     }
     
     var loginNavigationPath = NavigationPath()

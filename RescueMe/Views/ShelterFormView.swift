@@ -53,60 +53,58 @@ struct ShelterFormView: View {
     @FocusState var focus: ShelterField?
     
     var body: some View {
-        NavigationStack {
-            ScrollView(showsIndicators: false) {
-                VStack {
-                    VStack(spacing: 24) {
-                        Text("Shelter Registration")
-                            .font(.largeTitle)
-                            .bold()
-                            .accessibilityAddTraits(.isHeader)
-                            .accessibilityLabel("Shelter Registration")
-
-                        Text("Register your shelter to join our network and give visibility to animals in need of a home 🐶")
-                            .font(.title3)
-                            .foregroundStyle(.secondary)
-                            .multilineTextAlignment(.center)
-                            .accessibilityHint("This form allows you to register a shelter.")
-                    }
+        ScrollView(showsIndicators: false) {
+            VStack {
+                VStack(spacing: 24) {
+                    Text("Shelter Registration")
+                        .font(.largeTitle)
+                        .bold()
+                        .accessibilityAddTraits(.isHeader)
+                        .accessibilityLabel("Shelter Registration")
                     
-                    ImagePicker(size: 180)
-                        .padding()
-                        .accessibilityLabel("Shelter image")
-                        .accessibilityHint("Select an image to represent your shelter.")
-
-                    shelterForm
-                        .accessibilitySortPriority(1)
-                    
-                    Button {
-                        
-                    } label: {
-                        Text("Confirm")
-                    }
-                    .buttonPrimaryStyle()
-                    .accessibilityLabel("Confirm button")
-                    .accessibilityHint("Press to complete the shelter registration.")
-                }
-            }
-            .onChange(of: focus, { oldValue, newValue in
-                if newValue == .address {
-                    focus = .description
+                    Text("Register your shelter to join our network and give visibility to animals in need of a home 🐶")
+                        .font(.title3)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                        .accessibilityHint("This form allows you to register a shelter.")
                 }
                 
-                if oldValue == .address {
-                    showLocationSearchView = true
+                ImagePicker(size: 180)
+                    .padding()
+                    .accessibilityLabel("Shelter image")
+                    .accessibilityHint("Select an image to represent your shelter.")
+                
+                shelterForm
+                    .accessibilitySortPriority(1)
+                
+                Button {
+                    
+                } label: {
+                    Text("Confirm")
                 }
-            })
-            .sheet(isPresented: $showLocationSearchView) {
-                focus = .description
-            } content: {
-                LocationSearchView(selectedAddress: $address)
-                    .accessibilityLabel("Address search")
-                    .accessibilityHint("Enter a shelter address.")
+                .buttonPrimaryStyle()
+                .accessibilityLabel("Confirm button")
+                .accessibilityHint("Press to complete the shelter registration.")
             }
-            .formStyle(.columns)
-            .padding()
         }
+        .onChange(of: focus, { oldValue, newValue in
+            if newValue == .address {
+                focus = .description
+            }
+            
+            if oldValue == .address {
+                showLocationSearchView = true
+            }
+        })
+        .sheet(isPresented: $showLocationSearchView) {
+            focus = .description
+        } content: {
+            LocationSearchView(selectedAddress: $address)
+                .accessibilityLabel("Address search")
+                .accessibilityHint("Enter a shelter address.")
+        }
+        .formStyle(.columns)
+        .padding()
     }
     
     var shelterForm: some View {
@@ -118,7 +116,7 @@ struct ShelterFormView: View {
             .onSubmit { focus?.moveToNext() }
             .accessibilityLabel("Name field")
             .accessibilityHint("Enter the name of the shelter.")
-
+            
             CustomTextField(input: $address, label: "Address", prompt: "Address", systemName: "location", isFocused: focus == .address) { _ in
                 nil
             }
