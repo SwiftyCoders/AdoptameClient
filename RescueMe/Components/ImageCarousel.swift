@@ -49,7 +49,7 @@ struct ImageCarousel<ImageType: Identifiable & Hashable>: View {
     }
     
     private func startAutoScroll() {
-        timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 6, repeats: true) { _ in
             withAnimation {
                 currentIndex = (currentIndex + 1) % images.count
             }

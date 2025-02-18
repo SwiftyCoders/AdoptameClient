@@ -19,9 +19,7 @@ struct UserRepository: UserRepositoryProtocol, NetworkRepositoryProtocol {
     func loginUser(user: UserPostDTO) async throws {
         let data = try await postJSON(urlReq: .APIRequest(url: APIEndpoint.loginUser, httpMethod: .post, body: user), statusCode: 200)
         
-        if let data {
-            print(data.base64EncodedString())
-        }
+        if let data { KeychainManager.shared.storeKey(key: data, label: "usrTkn") }
     }
     
     func updateUser(user: UserDTO) async throws {

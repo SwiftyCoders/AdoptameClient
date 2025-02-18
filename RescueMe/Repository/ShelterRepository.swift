@@ -22,7 +22,10 @@ struct ShelterRepository: NetworkRepositoryProtocol, ShelterRepositoryProtocol {
     }
     
     func addNewShelter(shelter: ShelterDTO) async throws {
-        try await postJSON(urlReq: .APIRequest(url: APIEndpoint.createShelter(), httpMethod: .post, body: shelter), statusCode: 201)
+        guard let token = AppConfig.shared.userToken else { return }
+        let authHeader = ["Authorization": "Bearer \(token)"]
+        
+        try await postJSON(urlReq: .APIRequest(url: APIEndpoint.createShelter(), headers: authHeader, httpMethod: .post, body: shelter), statusCode: 201)
     }
     
     func deleteShelter(id: UUID) async throws {
